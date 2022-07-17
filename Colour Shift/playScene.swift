@@ -26,6 +26,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var round = 0
     var set = 0
     var masterNode = SKNode()
+    var shapeHolders = [SKNode]()
     lazy var pointstxt: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "HelveticaNeue-Thin")
         label.fontSize = 100
@@ -202,6 +203,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         shape.position = CGPoint(x: 0, y: 300)
         shape.isHidden = true
+        shapeHolders += [shape]
         masterNode.addChild(shape)
         
         if round > 1 {
@@ -274,7 +276,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             points += 20
             popUpPoints(points: 20, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
-        case "hardhape":
+        case "hardShape":
             points += 50
             popUpPoints(points: 50, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
@@ -334,6 +336,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         } else {
             increasePoints(typeHit: "easyShape", popUpPos: nil)
         }
+        masterNode.removeChildren(in: shapeHolders)
         beginRound()
     }
     
