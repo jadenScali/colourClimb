@@ -13,10 +13,8 @@ class targetLine: SKNode {
     var isRed = false
     //ball color UIColor(red: 0.922, green: 0.333, blue: 0.271, alpha: 1)
     var colors = [UIColor.red,
-                  UIColor.yellow,
-                  UIColor.green,
-                  UIColor.blue,
                   UIColor.cyan,
+                  UIColor.green,
                   UIColor.magenta]
     var currentColor = UIColor.white
     var line = SKSpriteNode(color: .white, size: CGSize(width: 1, height: 1))

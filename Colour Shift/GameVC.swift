@@ -9,7 +9,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,7 @@ class GameViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portrait
     }
 
     override var prefersStatusBarHidden: Bool {
