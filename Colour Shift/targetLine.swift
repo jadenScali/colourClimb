@@ -84,5 +84,10 @@ class targetLine: SKNode {
             SKAction.move(to: CGPoint(x: line.position.x * 20, y: line.position.y * 20), duration: 2),
             SKAction.removeFromParent()
         ]))
+        
+        parent!.run(.sequence([
+            SKAction.wait(forDuration: 2),
+            SKAction.removeFromParent()
+        ]))
     }
 }
