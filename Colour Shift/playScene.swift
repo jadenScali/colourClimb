@@ -46,6 +46,17 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         //view.showsPhysics = true
         physicsWorld.contactDelegate = self
         
+        var nightMode = false
+        if UserDefaults.standard.object(forKey: "nightMode") != nil {
+            nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
+        }
+        
+        if nightMode {
+            self.backgroundColor = #colorLiteral(red: 0.8, green: 0.7529411765, blue: 0.4392156863, alpha: 1)
+        } else {
+            self.backgroundColor = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
+        }
+        
         addChild(masterNode)
         
         let boarder = SKSpriteNode()

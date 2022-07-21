@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -28,13 +27,13 @@
                                 <rect key="frame" x="85.5" y="188.5" width="243.5" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="100"/>
-                                <color key="textColor" name="bgColor"/>
+                                <color key="textColor" name="bgColour"/>
                                 <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-pz-Cx1" userLabel="tutorialRow">
                                 <rect key="frame" x="20" y="358.5" width="374" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9o-xh-Tgx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9o-xh-Tgx">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,7 +42,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7em-bO-05o">
                                         <rect key="frame" x="325" y="14.5" width="51" height="31"/>
                                         <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="thumbTintColor" name="bgColor"/>
+                                        <color key="thumbTintColor" name="bgColour"/>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,7 +59,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-Co-gQ4" userLabel="musicRow">
                                 <rect key="frame" x="20" y="428.5" width="374" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xle-w8-9CP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xle-w8-9CP">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,7 +68,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVX-W9-fLB">
                                         <rect key="frame" x="325" y="14.5" width="51" height="31"/>
                                         <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="thumbTintColor" name="bgColor"/>
+                                        <color key="thumbTintColor" name="bgColour"/>
                                         <connections>
                                             <action selector="musicSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="diy-QH-Sue"/>
                                         </connections>
@@ -93,32 +92,64 @@
                                     <constraint firstAttribute="height" constant="70" id="bjA-Cf-QaQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="tintColor" name="bgColor"/>
+                                <color key="tintColor" name="bgColour"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Play"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Play" cornerStyle="capsule">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="50"/>
                                     <directionalEdgeInsets key="contentInsets" top="5" leading="50" bottom="5" trailing="50"/>
-                                    <color key="baseForegroundColor" name="bgColor"/>
+                                    <color key="baseForegroundColor" name="bgColour"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="iA4-wZ-zkS" kind="presentation" animates="NO" modalPresentationStyle="overFullScreen" id="ffc-LS-nHo"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xa3-gG-vEa" userLabel="nightRow">
+                                <rect key="frame" x="20" y="498.5" width="374" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SW-qd-Wbp">
+                                        <rect key="frame" x="0.0" y="0.0" width="244" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YKB-pv-8qS">
+                                        <rect key="frame" x="325" y="14.5" width="51" height="31"/>
+                                        <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="thumbTintColor" name="bgColour"/>
+                                        <connections>
+                                            <action selector="nightSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="AV5-9I-1ry"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YKB-pv-8qS" secondAttribute="trailing" id="5NG-vt-rb8"/>
+                                    <constraint firstAttribute="height" constant="60" id="7Bb-am-DGj"/>
+                                    <constraint firstItem="6SW-qd-Wbp" firstAttribute="height" secondItem="xa3-gG-vEa" secondAttribute="height" id="QOS-kr-HcI"/>
+                                    <constraint firstItem="6SW-qd-Wbp" firstAttribute="leading" secondItem="xa3-gG-vEa" secondAttribute="leading" id="R81-L0-hQ6"/>
+                                    <constraint firstItem="YKB-pv-8qS" firstAttribute="centerY" secondItem="xa3-gG-vEa" secondAttribute="centerY" id="ZkT-mS-Tbh"/>
+                                    <constraint firstItem="6SW-qd-Wbp" firstAttribute="centerY" secondItem="xa3-gG-vEa" secondAttribute="centerY" id="dAj-o0-OS4"/>
+                                    <constraint firstItem="YKB-pv-8qS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6SW-qd-Wbp" secondAttribute="trailing" constant="10" id="z6M-dh-PaM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
-                        <color key="backgroundColor" name="bgColor"/>
+                        <color key="backgroundColor" name="bgColour"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="MQ5-Co-gQ4" secondAttribute="trailing" constant="20" id="1i1-AE-sXp"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="xa3-gG-vEa" secondAttribute="trailing" constant="20" id="5I4-ru-9gV"/>
                             <constraint firstItem="655-8N-fqc" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="IAX-Gq-TFI"/>
                             <constraint firstItem="MQ5-Co-gQ4" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="JzF-ZL-C4y"/>
                             <constraint firstItem="655-8N-fqc" firstAttribute="top" secondItem="fTS-Os-pos" secondAttribute="bottom" constant="5" id="N6r-dT-Y1F"/>
+                            <constraint firstItem="xa3-gG-vEa" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="Nc2-IZ-bJp"/>
+                            <constraint firstItem="xa3-gG-vEa" firstAttribute="top" secondItem="MQ5-Co-gQ4" secondAttribute="bottom" constant="10" id="OzP-D9-iJb"/>
                             <constraint firstItem="fTS-Os-pos" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="PVc-dG-bbG"/>
+                            <constraint firstItem="0yY-09-caZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xa3-gG-vEa" secondAttribute="bottom" constant="5" id="RrK-J0-TKd"/>
                             <constraint firstItem="0yY-09-caZ" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="SmO-ZB-0ww"/>
                             <constraint firstItem="MQ5-Co-gQ4" firstAttribute="top" secondItem="2q5-pz-Cx1" secondAttribute="bottom" constant="10" id="Vxc-op-sEz"/>
-                            <constraint firstItem="0yY-09-caZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MQ5-Co-gQ4" secondAttribute="bottom" constant="5" id="bd4-Qi-GUM"/>
                             <constraint firstItem="2q5-pz-Cx1" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="bmZ-We-lly"/>
                             <constraint firstItem="2q5-pz-Cx1" firstAttribute="top" secondItem="655-8N-fqc" secondAttribute="bottom" constant="50" id="ei7-fX-uDd"/>
                             <constraint firstItem="fTS-Os-pos" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" priority="750" constant="20" id="ewK-rd-TX4"/>
@@ -128,6 +159,11 @@
                     </view>
                     <connections>
                         <outlet property="musicButton" destination="SVX-W9-fLB" id="BDe-Tf-qX2"/>
+                        <outlet property="nightButton" destination="YKB-pv-8qS" id="q7J-im-BVS"/>
+                        <outlet property="playButton" destination="0yY-09-caZ" id="I2O-fL-n9c"/>
+                        <outlet property="shiftTitletxt" destination="655-8N-fqc" id="c2d-c3-7bz"/>
+                        <outlet property="superView" destination="3se-qz-xqx" id="4NS-8e-nBT"/>
+                        <outlet property="tutorialButton" destination="7em-bO-05o" id="WHo-pL-Fgc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -152,8 +188,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="bgColor">
-            <color red="0.98400002717971802" green="0.91399997472763062" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="bgColour">
+            <color red="0.9843137264251709" green="0.91372549533843994" blue="0.49803921580314636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
