@@ -385,12 +385,21 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             
             if target.isRed {
                 print("GAME OVER")
+                
+                let haptic = UIImpactFeedbackGenerator(style: .heavy)
+                haptic.impactOccurred()
+                
                 endGame()
             } else if !target.isRed {
+                
+                let haptic = UIImpactFeedbackGenerator(style: .soft)
+                haptic.impactOccurred()
+                
                 increasePoints(typeHit: .side, popUpPos: ball.position)
                 let shake = SKAction.shake(initialPosition: masterNode.position, duration: 0.1, amplitudeX: 0, amplitudeY: 100)
                 masterNode.run(shake)
                 target.changeColor()
+                
                 //checks if all targets in targets areRed
                 for t in targetLines {
                     if !t.isRed {

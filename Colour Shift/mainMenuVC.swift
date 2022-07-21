@@ -65,9 +65,13 @@ class mainMenuVC: UIViewController {
         if sender.isOn {
             UserDefaults.standard.set(true, forKey: "musicIsPlaying")
             playStopMusic()
+            let haptic = UIImpactFeedbackGenerator(style: .soft)
+            haptic.impactOccurred()
         } else {
             UserDefaults.standard.set(false, forKey: "musicIsPlaying")
             playStopMusic()
+            let haptic = UIImpactFeedbackGenerator(style: .soft)
+            haptic.impactOccurred()
         }
     }
     
