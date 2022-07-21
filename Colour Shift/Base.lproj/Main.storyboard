@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -69,6 +70,9 @@
                                         <rect key="frame" x="325" y="14.5" width="51" height="31"/>
                                         <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="thumbTintColor" name="bgColor"/>
+                                        <connections>
+                                            <action selector="musicSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="diy-QH-Sue"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,10 +87,17 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yY-09-caZ">
-                                <rect key="frame" x="113.5" y="742" width="187" height="70"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play" cornerStyle="capsule" titleAlignment="center">
-                                    <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="50"/>
+                                <rect key="frame" x="112" y="742" width="190" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="bjA-Cf-QaQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" name="bgColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Play"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Play" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="50"/>
                                     <directionalEdgeInsets key="contentInsets" top="5" leading="50" bottom="5" trailing="50"/>
                                     <color key="baseForegroundColor" name="bgColor"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,7 +118,7 @@
                             <constraint firstItem="fTS-Os-pos" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="PVc-dG-bbG"/>
                             <constraint firstItem="0yY-09-caZ" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="SmO-ZB-0ww"/>
                             <constraint firstItem="MQ5-Co-gQ4" firstAttribute="top" secondItem="2q5-pz-Cx1" secondAttribute="bottom" constant="10" id="Vxc-op-sEz"/>
-                            <constraint firstItem="0yY-09-caZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MQ5-Co-gQ4" secondAttribute="bottom" constant="20" id="bd4-Qi-GUM"/>
+                            <constraint firstItem="0yY-09-caZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MQ5-Co-gQ4" secondAttribute="bottom" constant="5" id="bd4-Qi-GUM"/>
                             <constraint firstItem="2q5-pz-Cx1" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="bmZ-We-lly"/>
                             <constraint firstItem="2q5-pz-Cx1" firstAttribute="top" secondItem="655-8N-fqc" secondAttribute="bottom" constant="50" id="ei7-fX-uDd"/>
                             <constraint firstItem="fTS-Os-pos" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" priority="750" constant="20" id="ewK-rd-TX4"/>
@@ -115,6 +126,9 @@
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="2q5-pz-Cx1" secondAttribute="trailing" constant="20" id="o2U-dQ-Xff"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="musicButton" destination="SVX-W9-fLB" id="BDe-Tf-qX2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,7 +153,7 @@
     </scenes>
     <resources>
         <namedColor name="bgColor">
-            <color red="0.98431372549019602" green="0.9137254901960784" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98400002717971802" green="0.91399997472763062" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

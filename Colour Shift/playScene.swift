@@ -18,8 +18,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var spinSpeed = 5.0
     var maxSpinSpeed = 1.5
     var sizeMultipler = 3
-    //1 is easy 2 is medium 3 is hard
-    var shapeType = 1
     var totalTargets = 0
     var layers = 1
     var points = 0
@@ -36,6 +34,12 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         label.text = "0"
         return label
     }()
+    
+    var currentShapeType = ShapeType.easy
+    
+    enum ShapeType {
+        case side, easy, medium, hard
+    }
     
     override func didMove(to view: SKView) {
         
@@ -135,20 +139,20 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         roundPopUp()
         
         if set == 1 {
-            shapeType = 1
+            currentShapeType = .easy
             spawnShape(type: easyShapes)
         } else if set == 5 {
             if round >= 10 {
                 let ranNum = Int.random(in: 1...2)
                 if ranNum == 1 {
-                    shapeType = 3
+                    currentShapeType = .hard
                     spawnShape(type: hardShapes)
                 } else {
-                    shapeType = 2
+                    currentShapeType = .medium
                     spawnShape(type: mediumShapes)
                 }
             } else {
-                shapeType = 2
+                currentShapeType = .medium
                 spawnShape(type: mediumShapes)
             }
         } else {
@@ -165,10 +169,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if 5 - set <= mediumShapesCount {
-                shapeType = 2
+                currentShapeType = .medium
                 spawnShape(type: mediumShapes)
             } else {
-                shapeType = 1
+                currentShapeType = .easy
                 spawnShape(type: easyShapes)
             }
         }
@@ -258,31 +262,27 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         self.view?.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
     }
     
-    func increasePoints(typeHit: String, popUpPos: CGPoint?) {
+    func increasePoints(typeHit: ShapeType, popUpPos: CGPoint?) {
         
         switch typeHit {
             
-        case "side":
+        case .side:
             points += 1
             popUpPoints(points: 1, fontSize: 35, position: popUpPos!)
             break
-        case "easyShape":
+        case .easy:
             points += 10
             popUpPoints(points: 10, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
-        case "normalShape":
+        case .medium:
             points += 20
             popUpPoints(points: 20, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
-        case "hardShape":
+        case .hard:
             points += 50
             popUpPoints(points: 50, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
-        default:
-            print("ERROR")
-            break
         }
-        
         pointstxt.text = "\(points)"
     }
     
@@ -327,13 +327,8 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         }
         spinSpeed -= 0.15
         
-        if shapeType == 3 {
-            increasePoints(typeHit: "hardShape", popUpPos: nil)
-        } else if shapeType == 2 {
-            increasePoints(typeHit: "normalShape", popUpPos: nil)
-        } else {
-            increasePoints(typeHit: "easyShape", popUpPos: nil)
-        }
+        increasePoints(typeHit: currentShapeType, popUpPos: nil)
+        
         beginRound()
     }
     
@@ -392,7 +387,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 print("GAME OVER")
                 endGame()
             } else if !target.isRed {
-                increasePoints(typeHit: "side", popUpPos: ball.position)
+                increasePoints(typeHit: .side, popUpPos: ball.position)
                 let shake = SKAction.shake(initialPosition: masterNode.position, duration: 0.1, amplitudeX: 0, amplitudeY: 100)
                 masterNode.run(shake)
                 target.changeColor()
