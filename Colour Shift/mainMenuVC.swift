@@ -102,7 +102,7 @@ class mainMenuVC: UIViewController {
         
         var colour = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
         if nightMode {
-            colour = #colorLiteral(red: 0.8, green: 0.7529411765, blue: 0.4392156863, alpha: 1)
+            colour = UIColor.black
             nightButton.isOn = true
         } else {
             colour = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
