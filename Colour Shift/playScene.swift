@@ -35,6 +35,14 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         return label
     }()
     
+    //for stats
+    var hiScore = 0
+    var hiRound = 0
+    var gamesPlayed = 0
+    var shapesDestroyed = 0
+    var linesDestroyed = 0
+    var ballsFired = 0
+    
     var currentShapeType = ShapeType.easy
     
     enum ShapeType {
@@ -45,6 +53,8 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         //view.showsPhysics = true
         physicsWorld.contactDelegate = self
+        
+        loadStats()
         
         var nightMode = false
         if UserDefaults.standard.object(forKey: "nightMode") != nil {
@@ -242,6 +252,8 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnBall() {
         
+        ballsFired += 1
+        
         let texture = SKTexture(imageNamed: "ball")
         let ball = SKSpriteNode(texture: texture)
         ball.name = "ball"
@@ -268,9 +280,50 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         self.isPaused = true
         
+        gamesPlayed += 1
+        updateStats()
+        
         let scene = playScene(fileNamed: "GameScene")
         scene?.scaleMode = .aspectFill
         self.view?.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
+    }
+    
+    func loadStats() {
+        
+        if UserDefaults.standard.object(forKey: "hiScore") != nil {
+            hiScore = UserDefaults.standard.object(forKey: "hiScore") as! Int
+        }
+        if UserDefaults.standard.object(forKey: "hiRound") != nil {
+            hiRound = UserDefaults.standard.object(forKey: "hiRound") as! Int
+        }
+        if UserDefaults.standard.object(forKey: "gamesPlayed") != nil {
+            gamesPlayed = UserDefaults.standard.object(forKey: "gamesPlayed") as! Int
+        }
+        if UserDefaults.standard.object(forKey: "shapesDestroyed") != nil {
+            shapesDestroyed = UserDefaults.standard.object(forKey: "shapesDestroyed") as! Int
+        }
+        if UserDefaults.standard.object(forKey: "linesDestroyed") != nil {
+            linesDestroyed = UserDefaults.standard.object(forKey: "linesDestroyed") as! Int
+        }
+        if UserDefaults.standard.object(forKey: "ballsFired") != nil {
+            ballsFired = UserDefaults.standard.object(forKey: "ballsFired") as! Int
+        }
+    }
+    
+    func updateStats() {
+        
+        if points > hiScore {
+            hiScore = points
+            UserDefaults.standard.set(hiScore, forKey: "hiScore")
+        }
+        if round > hiRound {
+            hiRound = round
+            UserDefaults.standard.set(hiRound, forKey: "hiRound")
+        }
+        UserDefaults.standard.set(gamesPlayed, forKey: "gamesPlayed")
+        UserDefaults.standard.set(shapesDestroyed, forKey: "shapesDestroyed")
+        UserDefaults.standard.set(linesDestroyed, forKey: "linesDestroyed")
+        UserDefaults.standard.set(ballsFired, forKey: "ballsFired")
     }
     
     func increasePoints(typeHit: ShapeType, popUpPos: CGPoint?) {
@@ -278,18 +331,22 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         switch typeHit {
             
         case .side:
+            linesDestroyed += 1
             points += 1
             popUpPoints(points: 1, fontSize: 35, position: popUpPos!)
             break
         case .easy:
+            shapesDestroyed += 1
             points += 10
             popUpPoints(points: 10, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
         case .medium:
+            shapesDestroyed += 1
             points += 20
             popUpPoints(points: 20, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
         case .hard:
+            shapesDestroyed += 1
             points += 50
             popUpPoints(points: 50, fontSize: 65, position: CGPoint(x: 0, y: 300))
             break

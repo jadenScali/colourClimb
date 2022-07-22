@@ -54,6 +54,12 @@ class mainMenuVC: UIViewController {
             musicButton.isOn = true
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        determineColour()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     override var shouldAutorotate: Bool {
         return true
@@ -91,6 +97,11 @@ class mainMenuVC: UIViewController {
             UserDefaults.standard.set(false, forKey: "nightMode")
             determineColour()
         }
+    }
+    
+    @IBAction func dragOutsidePlayButton(_ sender: Any) {
+        
+        determineColour()
     }
     
     func determineColour() {
