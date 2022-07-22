@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MainNC-->
+        <!--mainNC-->
         <scene sceneID="cz3-X8-Qjl">
             <objects>
-                <navigationController id="Iht-SD-Qgd" customClass="mainNC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Iht-SD-Qgd" userLabel="mainNC" customClass="mainNC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iOc-ph-jfR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-865" y="84"/>
         </scene>
-        <!--Main MenuVC-->
+        <!--mainMenuVC-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="mainMenuVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" userLabel="mainMenuVC" customClass="mainMenuVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,10 +233,10 @@
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="83.705357142857139"/>
         </scene>
-        <!--GameVC-->
+        <!--gameVC-->
         <scene sceneID="0n6-dP-m0u">
             <objects>
-                <viewController id="iA4-wZ-zkS" customClass="gameVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iA4-wZ-zkS" userLabel="gameVC" customClass="gameVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C0S-uu-IRp" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
