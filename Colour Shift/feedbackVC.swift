@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import MessageUI
 
-class feedbackVC: UIViewController {
+class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var superView: UIView!
     @IBOutlet weak var contactUsButton: UIButton!
+    @IBOutlet weak var feedBackBodyTxt: UILabel!
+    
+    var didSendFeedback = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +23,11 @@ class feedbackVC: UIViewController {
     override func viewDidLayoutSubviews() {
         
         determineColour()
+        
+        if didSendFeedback {
+            feedBackBodyTxt.text = "Thank you for your feedback!"
+            contactUsButton.isHidden = true
+        }
     }
     
     func determineColour() {
@@ -46,6 +55,15 @@ class feedbackVC: UIViewController {
     
     @IBAction func contactUsButtonPress(_ sender: Any) {
         
-        
+        let vc = MFMailComposeViewController()
+        vc.mailComposeDelegate = self
+        vc.setSubject("Feedback")
+        vc.setToRecipients(["colourshifthelp@gmail.com"])
+        present(vc, animated: true)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        didSendFeedback = true
+        controller.dismiss(animated: true)
     }
 }

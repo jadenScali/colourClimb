@@ -730,7 +730,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd6-cZ-duo">
-                                <rect key="frame" x="38" y="742" width="338.5" height="70"/>
+                                <rect key="frame" x="61" y="742" width="292" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="1Xb-EC-GdT"/>
@@ -740,7 +740,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Play"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Contact Us" cornerStyle="capsule">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="50"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                     <directionalEdgeInsets key="contentInsets" top="5" leading="50" bottom="5" trailing="50"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
@@ -768,6 +768,7 @@
                     <navigationItem key="navigationItem" title=" " id="tmR-Ym-ak8"/>
                     <connections>
                         <outlet property="contactUsButton" destination="Wd6-cZ-duo" id="tid-Zm-z3a"/>
+                        <outlet property="feedBackBodyTxt" destination="dDR-5Q-0YX" id="gJK-fh-k98"/>
                         <outlet property="superView" destination="xpL-Qp-Zfr" id="En1-zN-PDp"/>
                     </connections>
                 </viewController>
