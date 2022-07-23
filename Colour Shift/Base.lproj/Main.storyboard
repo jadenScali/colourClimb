@@ -195,7 +195,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="dragOutsidePlayButton:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="XEb-S9-INZ"/>
-                                    <segue destination="iA4-wZ-zkS" kind="presentation" animates="NO" modalPresentationStyle="overFullScreen" id="ffc-LS-nHo"/>
+                                    <segue destination="iA4-wZ-zkS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="X05-Rw-WXg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,10 +233,10 @@
             </objects>
             <point key="canvasLocation" x="34.782608695652179" y="83.705357142857139"/>
         </scene>
-        <!--gameVC-->
+        <!--GameVC-->
         <scene sceneID="0n6-dP-m0u">
             <objects>
-                <viewController id="iA4-wZ-zkS" userLabel="gameVC" customClass="gameVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iA4-wZ-zkS" customClass="GameVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C0S-uu-IRp" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,7 +245,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8yd-v3-eER"/>
                     <connections>
-                        <segue destination="Iht-SD-Qgd" kind="presentation" identifier="gameToMainNC" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="zhY-mN-BUd"/>
+                        <segue destination="Iht-SD-Qgd" kind="modal" identifier="gameToMainNC" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="zhY-mN-BUd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJv-1A-Ivy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
