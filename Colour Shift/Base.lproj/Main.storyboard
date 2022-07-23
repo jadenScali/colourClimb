@@ -346,6 +346,9 @@
                                         <rect key="frame" x="314" y="0.0" width="60" height="60"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <segue destination="IBR-TJ-WuQ" kind="show" id="pnK-GY-1Z3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -690,7 +693,87 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRS-IZ-HH4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1673.913043478261" y="83.705357142857139"/>
+            <point key="canvasLocation" x="838" y="-593"/>
+        </scene>
+        <!--feedbackVC-->
+        <scene sceneID="57j-eK-WzS">
+            <objects>
+                <viewController id="IBR-TJ-WuQ" userLabel="feedbackVC" customClass="feedbackVC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xpL-Qp-Zfr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1f-CV-VX5" userLabel="feedbackRow">
+                                <rect key="frame" x="20" y="88" width="374" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWE-oI-nTg">
+                                        <rect key="frame" x="0.0" y="0.0" width="215.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PWE-oI-nTg" secondAttribute="trailing" constant="10" id="HkL-Ml-kKd"/>
+                                    <constraint firstItem="PWE-oI-nTg" firstAttribute="height" secondItem="P1f-CV-VX5" secondAttribute="height" id="I0z-8f-gQA"/>
+                                    <constraint firstItem="PWE-oI-nTg" firstAttribute="centerY" secondItem="P1f-CV-VX5" secondAttribute="centerY" id="THp-YY-czi"/>
+                                    <constraint firstItem="PWE-oI-nTg" firstAttribute="leading" secondItem="P1f-CV-VX5" secondAttribute="leading" id="pxJ-p0-FuX"/>
+                                    <constraint firstAttribute="height" constant="60" id="rsI-dN-dek"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="dDR-5Q-0YX">
+                                <rect key="frame" x="20" y="158" width="374" height="334.5"/>
+                                <string key="text">All feedback is always appreciated. Whether it’s a bug report, a recommendation, or just a comment we are always happy to hear from our users.</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd6-cZ-duo">
+                                <rect key="frame" x="38" y="742" width="338.5" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="1Xb-EC-GdT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Play"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Contact Us" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="50"/>
+                                    <directionalEdgeInsets key="contentInsets" top="5" leading="50" bottom="5" trailing="50"/>
+                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="contactUsButtonPress:" destination="IBR-TJ-WuQ" eventType="touchUpInside" id="dXU-c9-ewq"/>
+                                    <action selector="dragOutsidePlayButton:" destination="IBR-TJ-WuQ" eventType="touchUpInside" id="PNj-04-D7N"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JDc-8p-ZTn"/>
+                        <color key="backgroundColor" name="bgColour"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JDc-8p-ZTn" firstAttribute="bottom" secondItem="Wd6-cZ-duo" secondAttribute="bottom" constant="50" id="0L1-Cj-fDQ"/>
+                            <constraint firstItem="JDc-8p-ZTn" firstAttribute="trailing" secondItem="P1f-CV-VX5" secondAttribute="trailing" constant="20" id="QQk-vD-Jb4"/>
+                            <constraint firstItem="P1f-CV-VX5" firstAttribute="leading" secondItem="JDc-8p-ZTn" secondAttribute="leading" constant="20" id="Xf7-mh-B9Y"/>
+                            <constraint firstItem="dDR-5Q-0YX" firstAttribute="trailing" secondItem="JDc-8p-ZTn" secondAttribute="trailing" constant="-20" id="ZGU-oF-Vte"/>
+                            <constraint firstItem="Wd6-cZ-duo" firstAttribute="centerX" secondItem="JDc-8p-ZTn" secondAttribute="centerX" id="auu-Zg-mgk"/>
+                            <constraint firstItem="dDR-5Q-0YX" firstAttribute="top" secondItem="P1f-CV-VX5" secondAttribute="bottom" constant="10" id="ay8-GW-SWo"/>
+                            <constraint firstItem="Wd6-cZ-duo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dDR-5Q-0YX" secondAttribute="bottom" constant="20" id="gbd-Dg-EJG"/>
+                            <constraint firstItem="P1f-CV-VX5" firstAttribute="top" secondItem="JDc-8p-ZTn" secondAttribute="top" id="mnK-3h-uoA"/>
+                            <constraint firstItem="dDR-5Q-0YX" firstAttribute="leading" secondItem="JDc-8p-ZTn" secondAttribute="leading" constant="20" id="skA-Wh-icl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title=" " id="tmR-Ym-ak8"/>
+                    <connections>
+                        <outlet property="contactUsButton" destination="Wd6-cZ-duo" id="tid-Zm-z3a"/>
+                        <outlet property="superView" destination="xpL-Qp-Zfr" id="En1-zN-PDp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBg-Y7-ZL6" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628.985507246377" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>
