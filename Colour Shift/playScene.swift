@@ -283,9 +283,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         gamesPlayed += 1
         updateStats()
         
-        let scene = playScene(fileNamed: "GameScene")
-        scene?.scaleMode = .aspectFill
-        self.view?.presentScene(scene!, transition: SKTransition.fade(withDuration: 1))
+        NotificationCenter.default.post(name: Notification.Name("loadMainMenu"), object: nil)
     }
     
     func loadStats() {

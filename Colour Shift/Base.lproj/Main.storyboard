@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--mainNC-->
+        <!--MainNC-->
         <scene sceneID="cz3-X8-Qjl">
             <objects>
-                <navigationController id="Iht-SD-Qgd" userLabel="mainNC" customClass="mainNC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Iht-SD-Qgd" customClass="mainNC" customModule="Colour_Shift" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iOc-ph-jfR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -244,6 +244,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="8yd-v3-eER"/>
+                    <connections>
+                        <segue destination="Iht-SD-Qgd" kind="presentation" identifier="gameToMainNC" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="zhY-mN-BUd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJv-1A-Ivy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -561,7 +564,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-37-ZLh" userLabel="linesDestroyedRow">
                                                 <rect key="frame" x="20" y="440" width="374" height="100"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lines Destoryed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-cD-VRB">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lines Hit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-cD-VRB">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="HOS-Ld-QC9"/>

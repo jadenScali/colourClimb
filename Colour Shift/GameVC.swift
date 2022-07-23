@@ -9,12 +9,15 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class gameVC: UIViewController {
+class GameVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(loadMainMenu), name: Notification.Name("loadMainMenu"), object: nil)
+            
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
@@ -41,5 +44,10 @@ class gameVC: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    @objc func loadMainMenu() {
+        
+        self.performSegue(withIdentifier: "gameToMainNC", sender: self)
     }
 }

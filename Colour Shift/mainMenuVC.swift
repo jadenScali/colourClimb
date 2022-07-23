@@ -10,6 +10,25 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
+var musicIsPlaying = false
+
+var backGroundMusic: AVAudioPlayer? = {
+    guard let url = Bundle.main.url(forResource: "colourShiftLofiSoundtrack", withExtension: "m4a") else {
+        return nil
+    }
+    do {
+        //makes not effected by ringer
+        try AVAudioSession.sharedInstance().setCategory(.playback)
+        
+        let audioPlayer = try AVAudioPlayer(contentsOf: url)
+        //-1 makes it loop forever
+        audioPlayer.numberOfLoops = -1
+        return audioPlayer
+    } catch {
+        return nil
+    }
+}()
+
 class mainMenuVC: UIViewController {
     
     @IBOutlet weak var tutorialButton: UISwitch!
@@ -19,23 +38,6 @@ class mainMenuVC: UIViewController {
     @IBOutlet var superView: UIView!
     @IBOutlet weak var shiftTitletxt: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    
-    lazy var backGroundMusic: AVAudioPlayer? = {
-        guard let url = Bundle.main.url(forResource: "colourShiftLofiSoundtrack", withExtension: "m4a") else {
-            return nil
-        }
-        do {
-            //makes not effected by ringer
-            try AVAudioSession.sharedInstance().setCategory(.playback)
-            
-            let audioPlayer = try AVAudioPlayer(contentsOf: url)
-            //-1 makes it loop forever
-            audioPlayer.numberOfLoops = -1
-            return audioPlayer
-        } catch {
-            return nil
-        }
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +141,7 @@ class mainMenuVC: UIViewController {
         if musicPlaying {
             
             backGroundMusic?.play()
+            musicIsPlaying = true
         } else {
             
             backGroundMusic?.stop()
