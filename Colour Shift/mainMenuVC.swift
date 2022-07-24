@@ -55,6 +55,18 @@ class mainMenuVC: UIViewController {
         } else {
             musicButton.isOn = true
         }
+        
+        var wantsTutorial = true
+        
+        if UserDefaults.standard.object(forKey: "wantsTutorial") != nil {
+            wantsTutorial = UserDefaults.standard.object(forKey: "wantsTutorial") as! Bool
+        }
+        
+        if wantsTutorial {
+            tutorialButton.isOn = true
+        } else {
+            tutorialButton.isOn = false
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -98,6 +110,15 @@ class mainMenuVC: UIViewController {
         } else {
             UserDefaults.standard.set(false, forKey: "nightMode")
             determineColour()
+        }
+    }
+    
+    @IBAction func tutorialSwitch(_ sender: UISwitch) {
+        
+        if sender.isOn {
+            UserDefaults.standard.set(true, forKey: "wantsTutorial")
+        } else {
+            UserDefaults.standard.set(false, forKey: "wantsTutorial")
         }
     }
     

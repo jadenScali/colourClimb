@@ -63,6 +63,9 @@
                                                 <rect key="frame" x="325" y="14.5" width="51" height="31"/>
                                                 <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="thumbTintColor" name="bgColour"/>
+                                                <connections>
+                                                    <action selector="tutorialSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="H2Q-UM-hlA"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

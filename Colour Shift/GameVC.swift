@@ -10,16 +10,31 @@ import SpriteKit
 import GameplayKit
 
 class GameVC: UIViewController {
+    
+    var sceneName = "GameScene"
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             
             NotificationCenter.default.addObserver(self, selector: #selector(loadMainMenu), name: Notification.Name("loadMainMenu"), object: nil)
             
+            var wantsTutorial = true
+            
+            if UserDefaults.standard.object(forKey: "wantsTutorial") != nil {
+                wantsTutorial = UserDefaults.standard.object(forKey: "wantsTutorial") as! Bool
+            }
+            
+            if wantsTutorial {
+                sceneName = "TutorialScene"
+            } else {
+                sceneName = "GameScene"
+            }
+            
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: sceneName) {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
@@ -28,7 +43,6 @@ class GameVC: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = true
         }

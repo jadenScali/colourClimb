@@ -25,7 +25,12 @@ class targetLine: SKNode {
         
         super.init()
         
-        currentColor = colors[layers]
+        if layers < colors.count {
+            currentColor = colors[layers]
+        } else {
+            currentColor = colors.last!
+        }
+        
         line.color = currentColor
         line.anchorPoint = CGPoint(x: 0, y: 0)
         line.name = "target"
