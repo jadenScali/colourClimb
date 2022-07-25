@@ -99,6 +99,5 @@ class targetLine: SKNode {
     func removeHitbox() {
         
         line.physicsBody = nil
-        print("done")
     }
 }
