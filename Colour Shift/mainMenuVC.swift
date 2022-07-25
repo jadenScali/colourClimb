@@ -11,6 +11,7 @@ import GameplayKit
 import AVFoundation
 
 var musicIsPlaying = false
+var shouldFadeInMainView = false
 
 var backGroundMusic: AVAudioPlayer? = {
     guard let url = Bundle.main.url(forResource: "colourShiftLofiSoundtrack", withExtension: "m4a") else {
@@ -38,12 +39,14 @@ class mainMenuVC: UIViewController {
     @IBOutlet var superView: UIView!
     @IBOutlet weak var shiftTitletxt: UILabel!
     @IBOutlet weak var playButton: UIButton!
-
+    @IBOutlet weak var mainView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playStopMusic()
         determineColour()
+        determineTutorialButton()
         
         if UserDefaults.standard.object(forKey: "musicIsPlaying") != nil {
             let musicOn = UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool
@@ -55,24 +58,27 @@ class mainMenuVC: UIViewController {
         } else {
             musicButton.isOn = true
         }
-        
-        var wantsTutorial = true
-        
-        if UserDefaults.standard.object(forKey: "wantsTutorial") != nil {
-            wantsTutorial = UserDefaults.standard.object(forKey: "wantsTutorial") as! Bool
-        }
-        
-        if wantsTutorial {
-            tutorialButton.isOn = true
-        } else {
-            tutorialButton.isOn = false
-        }
     }
     
     override func viewDidLayoutSubviews() {
         
+        currentTutorialPart = 1
         determineColour()
+        determineTutorialButton()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        if shouldFadeInMainView {
+            shouldFadeInMainView = false
+            superView.alpha = 0
+            UIView.animate(
+                withDuration: 1,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: {
+                    self.superView.alpha = 1
+                }
+            )
+        }
     }
 
     override var shouldAutorotate: Bool {
@@ -149,6 +155,21 @@ class mainMenuVC: UIViewController {
         tutorialButton.thumbTintColor = colour
         musicButton.thumbTintColor = colour
         nightButton.thumbTintColor = colour
+    }
+    
+    func determineTutorialButton() {
+        
+        var wantsTutorial = true
+        
+        if UserDefaults.standard.object(forKey: "wantsTutorial") != nil {
+            wantsTutorial = UserDefaults.standard.object(forKey: "wantsTutorial") as! Bool
+        }
+        
+        if wantsTutorial {
+            tutorialButton.isOn = true
+        } else {
+            tutorialButton.isOn = false
+        }
     }
     
     @objc func playStopMusic() {

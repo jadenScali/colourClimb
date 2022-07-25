@@ -95,9 +95,4 @@ class targetLine: SKNode {
             SKAction.removeFromParent()
         ]))
     }
-    
-    func removeHitbox() {
-        
-        line.physicsBody = nil
-    }
 }

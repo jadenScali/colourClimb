@@ -62,6 +62,17 @@ class GameVC: UIViewController {
     
     @objc func loadMainMenu() {
         
-        self.performSegue(withIdentifier: "gameToMainNC", sender: self)
+        if let skView = self.view as! SKView? {
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: {
+                    skView.alpha = 0
+                }, completion: { finished in
+                    self.dismiss(animated: false)
+                }
+            )
+        }
     }
 }

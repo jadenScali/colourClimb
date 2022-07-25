@@ -34,7 +34,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         label.text = "0"
         return label
     }()
-    var gameIsOver = false
     
     //for stats
     var hiScore = 0
@@ -279,24 +278,13 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func endGame() {
         
-        gameIsOver = true
-        removeTagetLineHitboxes()
+        shouldFadeInMainView = true
+        self.isPaused = true
         
         gamesPlayed += 1
         updateStats()
         
-        masterNode.run(SKAction.move(by: CGVector(dx: 0, dy: 1750), duration: 0.5))
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            NotificationCenter.default.post(name: Notification.Name("loadMainMenu"), object: nil)
-        }
-    }
-    
-    func removeTagetLineHitboxes() {
-        
-        for t in targetLines {
-            t.removeHitbox()
-        }
+        NotificationCenter.default.post(name: Notification.Name("loadMainMenu"), object: nil)
     }
     
     func loadStats() {
@@ -437,9 +425,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if !gameIsOver {
-            spawnBall()
-        }
+        spawnBall()
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
