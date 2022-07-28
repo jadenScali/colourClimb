@@ -28,7 +28,7 @@ class targetLine: SKNode {
         if layers < colors.count {
             currentColor = colors[layers]
         } else {
-            currentColor = colors.last!
+            print("ERROR OUT OF RANGE")
         }
         
         line.color = currentColor

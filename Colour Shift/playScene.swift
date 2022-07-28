@@ -16,10 +16,11 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     //lower is faster
     var spinSpeed = 5.0
-    var maxSpinSpeed = 1.5
+    var maxSpinSpeed = 2.75
     var sizeMultipler = 3
     var totalTargets = 0
     var layers = 1
+    var maxLayers = 3
     var points = 0
     var round = 0
     var set = 0
@@ -199,7 +200,9 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         }
         
         //you want this to happen after shape spawns
-        layers = Int(round / 5) + 1
+        if Int(round / 5) + 1 <= maxLayers {
+            layers = Int(round / 5) + 1
+        }
     }
     
     func spawnShape(type shapes: [[CGPoint]]) {
@@ -382,16 +385,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func newRound() {
         
-        var maxLayers = 0
-        
         for t in targetLines {
             t.animatedMove()
-            maxLayers = t.colors.count
         }
         
-        if layers > maxLayers - 1 {
-            layers = maxLayers
-        }
         spinSpeed -= 0.15
         
         increasePoints(typeHit: currentShapeType, popUpPos: nil)
