@@ -12,6 +12,7 @@ import AVFoundation
 
 var musicIsPlaying = false
 var shouldFadeInMainView = false
+var currentTutorialPart = 1
 
 var backGroundMusic: AVAudioPlayer? = {
     guard let url = Bundle.main.url(forResource: "colourShiftLofiSoundtrack", withExtension: "m4a") else {
@@ -39,7 +40,6 @@ class mainMenuVC: UIViewController {
     @IBOutlet var superView: UIView!
     @IBOutlet weak var shiftTitletxt: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var mainView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

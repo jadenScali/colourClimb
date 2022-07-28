@@ -235,7 +235,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mainView" destination="K4h-dg-Xx2" id="MFc-ae-Zq0"/>
                         <outlet property="musicButton" destination="SVX-W9-fLB" id="BDe-Tf-qX2"/>
                         <outlet property="nightButton" destination="YKB-pv-8qS" id="q7J-im-BVS"/>
                         <outlet property="playButton" destination="0yY-09-caZ" id="I2O-fL-n9c"/>

@@ -7,8 +7,6 @@
 
 import SpriteKit
 
-var currentTutorialPart = 1
-
 class tutorialScene: SKScene, SKPhysicsContactDelegate {
     
     var masterNode = SKNode()
