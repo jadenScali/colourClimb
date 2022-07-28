@@ -30,6 +30,18 @@ class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavig
         }
     }
     
+    override var shouldAutorotate: Bool {
+        return true
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     func determineColour() {
         
         var nightMode = false

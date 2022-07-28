@@ -23,6 +23,18 @@ class optionsVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    override var shouldAutorotate: Bool {
+        return true
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     func determineColour() {
         
         var nightMode = false

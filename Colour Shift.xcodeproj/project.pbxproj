@@ -83,14 +83,14 @@
 				798FD2D12884879900779196 /* playScene.swift */,
 				798FD2E2288490B000779196 /* targetLine.swift */,
 				798FD2D32884879900779196 /* GameVC.swift */,
+				79C1FECD288ADAE900656B2B /* statsVC.swift */,
+				79C1FECF288C5FC200656B2B /* feedbackVC.swift */,
 				79C1FEC9288A171400656B2B /* optionsVC.swift */,
 				798FD2E428849FD000779196 /* mainMenuVC.swift */,
 				79C1FECB288ACED800656B2B /* mainNC.swift */,
 				798FD2D52884879900779196 /* Main.storyboard */,
-				79C1FECD288ADAE900656B2B /* statsVC.swift */,
 				798FD2D82884879B00779196 /* Assets.xcassets */,
 				798FD2DA2884879B00779196 /* LaunchScreen.storyboard */,
-				79C1FECF288C5FC200656B2B /* feedbackVC.swift */,
 			);
 			path = "Colour Shift";
 			sourceTree = "<group>";
