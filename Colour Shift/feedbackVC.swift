@@ -70,7 +70,7 @@ class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavig
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = self
         vc.setSubject("Feedback")
-        vc.setToRecipients(["colourshifthelp@gmail.com"])
+        vc.setToRecipients(["colourclimbhelp@gmail.com"])
         present(vc, animated: true)
     }
     
