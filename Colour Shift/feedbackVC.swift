@@ -60,6 +60,7 @@ class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavig
         contactUsButton.titleLabel?.textColor = colour
     }
     
+    //fixes weird bug where button text forgets what colour it should be
     @IBAction func dragOutsidePlayButton(_ sender: Any) {
         
         determineColour()

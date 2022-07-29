@@ -27,14 +27,14 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        //view.showsPhysics = true
         physicsWorld.contactDelegate = self
         
+        //checks nightmode and sets background colour
         var nightMode = false
+        
         if UserDefaults.standard.object(forKey: "nightMode") != nil {
             nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
         }
-        
         if nightMode {
             self.backgroundColor = UIColor.black
         } else {
@@ -42,6 +42,9 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         }
         
         addChild(masterNode)
+        
+        //generates invisible boarder slightly bigger than the screen
+        //used mainly for despawning objects that go off screen
         let boarder = SKSpriteNode()
         boarder.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         let b = SKPhysicsBody(edgeLoopFrom: CGRect(origin: CGPoint(x: -((self.frame.size.width * 1.5) / 2), y: -((self.frame.size.height * 1.5) / 2)), size: CGSize(width: self.frame.size.width * 1.5, height: self.frame.size.height * 1.5)))
@@ -57,9 +60,12 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         boarder.physicsBody?.contactTestBitMask = boarder.physicsBody?.collisionBitMask ?? 0
         boarder.position = CGPoint(x: 0, y: 0)
         masterNode.addChild(boarder)
+        
+        //adds blank intruction text at the bottom of screen
         masterNode.addChild(tutorialInstructiontxt)
         tutorialInstructiontxt.position = CGPoint(x: -280, y: -600)
-        tutorialBouncyText()
+        
+        addTutorialBouncyText()
         determinePart()
     }
     
@@ -107,13 +113,11 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         let sizeMultipler = 3
         
-        //spawns triangle shape
         let trianglePoints = [
             CGPoint(x: 0 * sizeMultipler, y: 50 * sizeMultipler),
             CGPoint(x: 43 * sizeMultipler, y: -25 * sizeMultipler),
             CGPoint(x: -43 * sizeMultipler, y: -25 * sizeMultipler)
         ]
-        
         spawnShape(numLayers: 1, shapePoints: trianglePoints, spinSpeed: 5)
     }
     
@@ -125,14 +129,12 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         let sizeMultipler = 2.5
         
-        //spawns triangle shape
         let squarePoints = [
             CGPoint(x: 50 * sizeMultipler, y: 50 * sizeMultipler),
             CGPoint(x: 50 * sizeMultipler, y: -50 * sizeMultipler),
             CGPoint(x: -50 * sizeMultipler, y: -50 * sizeMultipler),
             CGPoint(x: -50 * sizeMultipler, y: 50 * sizeMultipler)
         ]
-        
         spawnShape(numLayers: 2, shapePoints: squarePoints, spinSpeed: 4)
     }
     
@@ -142,6 +144,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         masterNode.run(SKAction.move(by: CGVector(dx: 0, dy: 1500), duration: 1))
         
+        //tutorial completed animation
         lazy var popUpText: SKLabelNode = {
             let popUpText = SKLabelNode(fontNamed: "HelveticaNeue-Light")
             popUpText.fontSize = 100
@@ -154,9 +157,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
             popUpText.position = CGPoint(x: 0, y: -1000)
             return popUpText
         }()
-        
         addChild(popUpText)
-        
         popUpText.run(.sequence([
             SKAction.wait(forDuration: 1),
             SKAction.move(to: CGPoint(x: 0, y: -100), duration: 0.5),
@@ -165,6 +166,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
             SKAction.removeFromParent()
         ]))
         
+        //loads accual game
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let scene = playScene(fileNamed: "GameScene")
             scene?.scaleMode = .aspectFill
@@ -172,7 +174,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func tutorialBouncyText() {
+    func addTutorialBouncyText() {
         
         lazy var tutorialText: SKLabelNode = {
             let tutorialText = SKLabelNode(fontNamed: "HelveticaNeue-Light")
@@ -222,6 +224,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
          
          let shape = SKSpriteNode()
          
+        //spawns a line between every point in the array of CGPoints as a child of shape
          for i in Range(0...sides.count - 1) {
              if i < sides.count - 1 {
                  let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[i+1])
@@ -231,11 +234,11 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
                  shape.addChild(t)
              }
          }
-         
          shape.position = CGPoint(x: 0, y: 260)
          shape.isHidden = true
          masterNode.addChild(shape)
          
+        //shape spawning animation
          if currentTutorialPart > 1 {
              DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                  shape.isHidden = false
@@ -253,27 +256,23 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
                  SKAction.scale(by: 20, duration: 1)
              ]))
          }
-         
+        
          shape.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi * 2.0, duration: TimeInterval(spinSpeed))))
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        print("COLISION")
-        
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        //print("node a \(nodeA)")
-        //print("node b \(nodeB)")
-        
+        //if anythings hits a ball calls ballCollision
         if contact.bodyB.node?.name == "ball" {
             ballCollision(between: nodeB, object: nodeA)
         }
     }
     
     func ballCollision(between ball: SKNode, object: SKNode) {
-        
+
         var gotAllTargets = true
         
         if currentTutorialPart == 1 {
@@ -285,7 +284,6 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
             let target = object.parent as! targetLine
             
             if target.isRed {
-                print("GAME OVER")
                 
                 let haptic = UIImpactFeedbackGenerator(style: .heavy)
                 haptic.impactOccurred()
@@ -299,6 +297,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
                 let haptic = UIImpactFeedbackGenerator(style: .soft)
                 haptic.impactOccurred()
                 
+                //screen shake
                 let shake = SKAction.shake(initialPosition: masterNode.position, duration: 0.1, amplitudeX: 0, amplitudeY: 100)
                 masterNode.run(shake)
                 target.changeColor()
@@ -324,6 +323,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         } else if object.name == "boarder" {
+            //despawns ball if it goes too far off screen
             ball.removeFromParent()
         }
     }

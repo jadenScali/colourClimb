@@ -43,8 +43,6 @@ class GameVC: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            //view.showsFPS = true
-            //view.showsNodeCount = true
         }
     }
 
@@ -62,6 +60,7 @@ class GameVC: UIViewController {
     
     @objc func loadMainMenu() {
         
+        //loads main menu with fade animation
         if let skView = self.view as! SKView? {
             UIView.animate(
                 withDuration: 0.5,

@@ -14,7 +14,7 @@ var targetLines: [targetLine] = []
 
 class playScene: SKScene, SKPhysicsContactDelegate {
     
-    //lower is faster
+    //lower spinSpeed means it'll spin faster
     var spinSpeed = 5.0
     var maxSpinSpeed = 2.75
     var sizeMultipler = 3
@@ -52,24 +52,24 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        //view.showsPhysics = true
         physicsWorld.contactDelegate = self
         
         loadStats()
         
+        //sets background
         var nightMode = false
         if UserDefaults.standard.object(forKey: "nightMode") != nil {
             nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
         }
-        
         if nightMode {
             self.backgroundColor = UIColor.black
         } else {
             self.backgroundColor = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
         }
-        
         addChild(masterNode)
         
+        //generates invisible boarder slightly bigger than the screen
+        //used mainly for despawning objects that go off screen
         let boarder = SKSpriteNode()
         boarder.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         let b = SKPhysicsBody(edgeLoopFrom: CGRect(origin: CGPoint(x: -((self.frame.size.width * 1.5) / 2), y: -((self.frame.size.height * 1.5) / 2)), size: CGSize(width: self.frame.size.width * 1.5, height: self.frame.size.height * 1.5)))
@@ -85,6 +85,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         boarder.physicsBody?.contactTestBitMask = boarder.physicsBody?.collisionBitMask ?? 0
         boarder.position = CGPoint(x: 0, y: 0)
         masterNode.addChild(boarder)
+        
         pointstxt.position = CGPoint(x: 0, y: -400)
         masterNode.addChild(pointstxt)
         beginRound()
@@ -153,13 +154,13 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             set += 1
         }
         
-        print(set)
-        
         round += 1
         targetLines = []
         
         roundPopUp()
         
+        //a set resets every 5 levels and it's value otehrwise increases by one each round
+        //helps space out harder shapes and make them more common as game progresses
         if set == 1 {
             currentShapeType = .easy
             spawnShape(type: easyShapes)
@@ -232,6 +233,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         shape.isHidden = true
         masterNode.addChild(shape)
         
+        //spawning animation
         if round > 1 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 shape.isHidden = false
@@ -287,6 +289,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         gamesPlayed += 1
         updateStats()
         
+        //tells gameVC to transition to new scene
         NotificationCenter.default.post(name: Notification.Name("loadMainMenu"), object: nil)
     }
     
@@ -385,6 +388,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func newRound() {
         
+        //shape breaking animation
         for t in targetLines {
             t.animatedMove()
         }
@@ -427,13 +431,8 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        print("COLISION")
-        
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
-        
-        //print("node a \(nodeA)")
-        //print("node b \(nodeB)")
         
         if contact.bodyB.node?.name == "ball" {
             ballCollision(between: nodeB, object: nodeA)
@@ -448,18 +447,17 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             let target = object.parent as! targetLine
             
             if target.isRed {
-                print("GAME OVER")
-                
                 let haptic = UIImpactFeedbackGenerator(style: .heavy)
                 haptic.impactOccurred()
                 
                 endGame()
             } else if !target.isRed {
-                
                 let haptic = UIImpactFeedbackGenerator(style: .soft)
                 haptic.impactOccurred()
                 
                 increasePoints(typeHit: .side, popUpPos: ball.position)
+                
+                //camera shake
                 let shake = SKAction.shake(initialPosition: masterNode.position, duration: 0.1, amplitudeX: 0, amplitudeY: 100)
                 masterNode.run(shake)
                 target.changeColor()

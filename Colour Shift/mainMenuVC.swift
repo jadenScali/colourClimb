@@ -67,6 +67,7 @@ class mainMenuVC: UIViewController {
         determineTutorialButton()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
+        //if coming from gameVC completes animation
         if shouldFadeInMainView {
             shouldFadeInMainView = false
             superView.alpha = 0
@@ -128,6 +129,7 @@ class mainMenuVC: UIViewController {
         }
     }
     
+    //fixes weird bug where button text forgets what colour it should be
     @IBAction func dragOutsidePlayButton(_ sender: Any) {
         
         determineColour()

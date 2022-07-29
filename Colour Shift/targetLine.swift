@@ -11,7 +11,6 @@ class targetLine: SKNode {
     
     var layers = 0
     var isRed = false
-    //ball color UIColor(red: 0.922, green: 0.333, blue: 0.271, alpha: 1)
     var colors = [UIColor.red,
                   UIColor.cyan,
                   UIColor.green,
@@ -27,8 +26,6 @@ class targetLine: SKNode {
         
         if layers < colors.count {
             currentColor = colors[layers]
-        } else {
-            print("ERROR OUT OF RANGE")
         }
         
         line.color = currentColor
@@ -37,6 +34,7 @@ class targetLine: SKNode {
         line.position = startPoint
         line.setScale(2)
         
+        //draws line
         let dx = endPoint.x - line.position.x
         let dy = endPoint.y - line.position.y
         let length = sqrt(dx*dx + dy*dy)
@@ -77,13 +75,13 @@ class targetLine: SKNode {
             line.color = currentColor
         }
         if layers == 0 {
-            print("final hit?")
             isRed = true
         }
     }
     
     func animatedMove() {
         
+        //break animation
         line.physicsBody = nil
         line.run(.sequence([
             SKAction.move(to: CGPoint(x: line.position.x * 20, y: line.position.y * 20), duration: 2),
