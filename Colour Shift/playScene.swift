@@ -15,6 +15,9 @@ var targetLines: [targetLine] = []
 class playScene: SKScene, SKPhysicsContactDelegate {
     
     var bgWidth: CGFloat = -1
+    var fgNames = ["forestFg", "highTreesFg", "highTreesFg", "highTreesFg"]
+    var bgNames = ["forestBg", "forestBg", "forestBg", "forestBg"]
+    var groundGroups: [SKNode] = []
     
     //lower spinSpeed means it'll spin faster
     var spinSpeed = 5.0
@@ -56,6 +59,9 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         
+        view.showsFPS = true
+        view.showsNodeCount = true
+        
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         loadStats()
@@ -70,7 +76,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         } else {
             self.backgroundColor = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
         }
-        createGrounds()
+        createGrounds(fgName: fgNames[0], bgName: bgNames[0], gSpawn: CGPoint(x: 0, y: 0))
         addChild(masterNode)
         
         //generates invisible boarder slightly bigger than the screen
@@ -100,39 +106,66 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         moveBg()
     }
     
-    func createGrounds() {
+    func createGrounds(fgName: String, bgName: String, gSpawn: CGPoint) {
         
-        let fg = SKSpriteNode(imageNamed: "forestFg")
+        let grounds = SKNode()
+        grounds.name = "grounds"
+        addChild(grounds)
+        
+        groundGroups += [grounds]
+        
+        let fg = SKSpriteNode(imageNamed: fgName)
         fg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
         fg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        fg.position = CGPoint(x: 0, y: 0)
+        fg.position = gSpawn
         fg.zPosition = -99
-        addChild(fg)
+        grounds.addChild(fg)
         
         for i in 0...1 {
-            let bg = SKSpriteNode(imageNamed: "forestBg")
+            let bg = SKSpriteNode(imageNamed: bgName)
             bg.name = "bg"
             bg.size.height = (self.scene?.size.height)!
             bg.size.width = (self.scene?.size.height)! * 1.686656671664168
-            bg.position = CGPoint(x: CGFloat(i) * bg.size.width, y: 0)
+            bg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            bg.position = CGPoint(x: CGFloat(i) * bg.size.width, y: gSpawn.y)
             bg.zPosition = -100
             
             bgWidth = bg.size.width
             
-            addChild(bg)
+            grounds.addChild(bg)
         }
     }
     
     func moveBg() {
         
-        self.enumerateChildNodes(withName: "bg", using: ({
-            (node, error) in
-            node.position.x -= 2
+        for grounds in groundGroups {
+            grounds.enumerateChildNodes(withName: "bg", using: ({
+                (node, error) in
+                node.position.x -= 2
+                
+                if node.position.x < -self.bgWidth + (self.scene?.size.width)! {
+                    node.position.x += self.bgWidth * 2
+                }
+            }))
+        }
+    }
+    
+    func tansitionGrounds() {
+        
+        createGrounds(fgName: fgNames[round], bgName: bgNames[round], gSpawn: CGPoint(x: 0, y: (self.scene?.size.height)!))
+        
+        for grounds in groundGroups {
             
-            if node.position.x < -self.bgWidth + (self.scene?.size.width)! {
-                node.position.x += self.bgWidth * 2
+            if groundGroups.first == grounds {
+                grounds.run(SKAction.sequence([
+                    SKAction.move(by: CGVector(dx: 0, dy: -(self.scene?.size.height)!), duration: 0.5),
+                    SKAction.removeFromParent()
+                ]))
+            } else {
+                grounds.run(SKAction.move(by: CGVector(dx: 0, dy: -(self.scene?.size.height)!), duration: 0.5))
             }
-        }))
+        }
+        groundGroups.remove(at: 0)
     }
     
     func beginRound() {
@@ -436,6 +469,8 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         for t in targetLines {
             t.animatedMove()
         }
+        
+        tansitionGrounds()
         
         spinSpeed -= 0.15
         
