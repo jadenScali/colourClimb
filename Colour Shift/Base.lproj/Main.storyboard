@@ -8,12 +8,17 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="MesseDuesseldorf-O1d3.ttf">
+            <string>Messe-Duesseldorf</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainNC-->
         <scene sceneID="cz3-X8-Qjl">
             <objects>
                 <navigationController id="Iht-SD-Qgd" customClass="mainNC" customModule="Colour_Climb" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iOc-ph-jfR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" id="iOc-ph-jfR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,127 +42,118 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4h-dg-Xx2">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Colour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-Os-pos">
-                                        <rect key="frame" x="63" y="0.0" width="288" height="119.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="100"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Colour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-Os-pos">
+                                        <rect key="frame" x="48.5" y="0.0" width="317" height="133.5"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="100"/>
+                                        <color key="textColor" name="offWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Climb " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="655-8N-fqc">
-                                        <rect key="frame" x="60.5" y="124.5" width="293.5" height="119.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="100"/>
-                                        <color key="textColor" name="bgColour"/>
+                                        <rect key="frame" x="48.5" y="138.5" width="317" height="133.5"/>
+                                        <color key="backgroundColor" name="offWhite"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="100"/>
+                                        <color key="textColor" name="happyOrange"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nNP-2r-Zfw">
-                                        <rect key="frame" x="20" y="254" width="374" height="285"/>
+                                        <rect key="frame" x="20" y="307" width="374" height="222"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-pz-Cx1" userLabel="tutorialRow">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="64"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9o-xh-Tgx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="64"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7em-bO-05o">
-                                                        <rect key="frame" x="325" y="14.5" width="51" height="31"/>
-                                                        <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="thumbTintColor" name="bgColour"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akS-kV-b9B">
+                                                        <rect key="frame" x="311.5" y="0.0" width="62.5" height="64"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain">
+                                                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                                        </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="tutorialSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="H2Q-UM-hlA"/>
+                                                            <action selector="tutorialOffOnTap:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yiN-gq-nej"/>
                                                         </connections>
-                                                    </switch>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ON" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoS-FQ-pXO">
+                                                        <rect key="frame" x="311.5" y="0.0" width="62.5" height="64"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                                        <color key="textColor" name="offWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="akS-kV-b9B" firstAttribute="leading" secondItem="PoS-FQ-pXO" secondAttribute="leading" id="0Sf-UI-TPa"/>
+                                                    <constraint firstItem="akS-kV-b9B" firstAttribute="top" secondItem="PoS-FQ-pXO" secondAttribute="top" id="2Sq-X8-R4L"/>
+                                                    <constraint firstAttribute="bottom" secondItem="PoS-FQ-pXO" secondAttribute="bottom" id="5CM-zN-NfA"/>
                                                     <constraint firstItem="f9o-xh-Tgx" firstAttribute="centerY" secondItem="2q5-pz-Cx1" secondAttribute="centerY" id="9Jg-hS-p4w"/>
-                                                    <constraint firstAttribute="height" constant="60" id="NyS-zO-KbK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PoS-FQ-pXO" secondAttribute="trailing" id="Cr6-V6-WTL"/>
+                                                    <constraint firstAttribute="height" constant="64" id="NyS-zO-KbK"/>
                                                     <constraint firstItem="f9o-xh-Tgx" firstAttribute="height" secondItem="2q5-pz-Cx1" secondAttribute="height" id="Pjq-m7-LgL"/>
-                                                    <constraint firstAttribute="trailing" secondItem="7em-bO-05o" secondAttribute="trailing" id="S89-57-T19"/>
-                                                    <constraint firstItem="7em-bO-05o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f9o-xh-Tgx" secondAttribute="trailing" constant="5" id="e7y-AU-xSb"/>
-                                                    <constraint firstItem="7em-bO-05o" firstAttribute="centerY" secondItem="2q5-pz-Cx1" secondAttribute="centerY" id="of4-Lt-eJm"/>
+                                                    <constraint firstItem="akS-kV-b9B" firstAttribute="bottom" secondItem="PoS-FQ-pXO" secondAttribute="bottom" id="UjR-jV-DFq"/>
+                                                    <constraint firstItem="PoS-FQ-pXO" firstAttribute="top" secondItem="2q5-pz-Cx1" secondAttribute="top" id="VSZ-vu-yXS"/>
+                                                    <constraint firstItem="akS-kV-b9B" firstAttribute="trailing" secondItem="PoS-FQ-pXO" secondAttribute="trailing" id="nlv-PX-QQ8"/>
                                                     <constraint firstItem="f9o-xh-Tgx" firstAttribute="leading" secondItem="2q5-pz-Cx1" secondAttribute="leading" id="vNA-iP-mcU"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-Co-gQ4" userLabel="musicRow">
-                                                <rect key="frame" x="0.0" y="75" width="374" height="60"/>
+                                                <rect key="frame" x="0.0" y="79" width="374" height="64"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xle-w8-9CP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="64"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVX-W9-fLB">
-                                                        <rect key="frame" x="325" y="14.5" width="51" height="31"/>
-                                                        <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="thumbTintColor" name="bgColour"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3No-uG-002">
+                                                        <rect key="frame" x="311.5" y="0.0" width="62.5" height="64"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain">
+                                                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                                        </buttonConfiguration>
                                                         <connections>
-                                                            <action selector="musicSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="diy-QH-Sue"/>
+                                                            <action selector="musicOffOnTap:" destination="BV1-FR-VrT" eventType="touchUpInside" id="6ud-dy-1Nb"/>
                                                         </connections>
-                                                    </switch>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ON" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITg-t8-et3">
+                                                        <rect key="frame" x="311.5" y="0.0" width="62.5" height="64"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                                        <color key="textColor" name="offWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="ITg-t8-et3" secondAttribute="trailing" id="5hr-f5-1Rg"/>
+                                                    <constraint firstItem="3No-uG-002" firstAttribute="top" secondItem="ITg-t8-et3" secondAttribute="top" id="7KN-89-eYk"/>
                                                     <constraint firstItem="Xle-w8-9CP" firstAttribute="leading" secondItem="MQ5-Co-gQ4" secondAttribute="leading" id="Byt-wa-Ei4"/>
                                                     <constraint firstItem="Xle-w8-9CP" firstAttribute="centerY" secondItem="MQ5-Co-gQ4" secondAttribute="centerY" id="DhV-e1-Zf4"/>
-                                                    <constraint firstItem="SVX-W9-fLB" firstAttribute="centerY" secondItem="MQ5-Co-gQ4" secondAttribute="centerY" id="JW0-Rk-tn2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ITg-t8-et3" secondAttribute="bottom" id="FRx-OO-2tq"/>
+                                                    <constraint firstItem="ITg-t8-et3" firstAttribute="top" secondItem="MQ5-Co-gQ4" secondAttribute="top" id="IzO-xu-QaK"/>
+                                                    <constraint firstItem="3No-uG-002" firstAttribute="leading" secondItem="ITg-t8-et3" secondAttribute="leading" id="OFh-uD-CRq"/>
                                                     <constraint firstItem="Xle-w8-9CP" firstAttribute="height" secondItem="MQ5-Co-gQ4" secondAttribute="height" id="SpL-Yq-iaE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="SVX-W9-fLB" secondAttribute="trailing" id="a4G-u4-DLi"/>
-                                                    <constraint firstAttribute="height" constant="60" id="vJd-Ra-G51"/>
-                                                    <constraint firstItem="SVX-W9-fLB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xle-w8-9CP" secondAttribute="trailing" constant="5" id="xLt-Wg-YBz"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xa3-gG-vEa" userLabel="nightRow">
-                                                <rect key="frame" x="0.0" y="150" width="374" height="60"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SW-qd-Wbp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="244" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YKB-pv-8qS">
-                                                        <rect key="frame" x="325" y="14.5" width="51" height="31"/>
-                                                        <color key="onTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="thumbTintColor" name="bgColour"/>
-                                                        <connections>
-                                                            <action selector="nightSwitch:" destination="BV1-FR-VrT" eventType="valueChanged" id="AV5-9I-1ry"/>
-                                                        </connections>
-                                                    </switch>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="YKB-pv-8qS" secondAttribute="trailing" id="5NG-vt-rb8"/>
-                                                    <constraint firstAttribute="height" constant="60" id="7Bb-am-DGj"/>
-                                                    <constraint firstItem="6SW-qd-Wbp" firstAttribute="height" secondItem="xa3-gG-vEa" secondAttribute="height" id="QOS-kr-HcI"/>
-                                                    <constraint firstItem="6SW-qd-Wbp" firstAttribute="leading" secondItem="xa3-gG-vEa" secondAttribute="leading" id="R81-L0-hQ6"/>
-                                                    <constraint firstItem="YKB-pv-8qS" firstAttribute="centerY" secondItem="xa3-gG-vEa" secondAttribute="centerY" id="ZkT-mS-Tbh"/>
-                                                    <constraint firstItem="6SW-qd-Wbp" firstAttribute="centerY" secondItem="xa3-gG-vEa" secondAttribute="centerY" id="dAj-o0-OS4"/>
-                                                    <constraint firstItem="YKB-pv-8qS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6SW-qd-Wbp" secondAttribute="trailing" constant="5" id="z6M-dh-PaM"/>
+                                                    <constraint firstItem="3No-uG-002" firstAttribute="bottom" secondItem="ITg-t8-et3" secondAttribute="bottom" id="pCO-yL-nz1"/>
+                                                    <constraint firstAttribute="height" constant="64" id="vJd-Ra-G51"/>
+                                                    <constraint firstItem="3No-uG-002" firstAttribute="trailing" secondItem="ITg-t8-et3" secondAttribute="trailing" id="zAm-RA-3t5"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-Yb-pTw" userLabel="optionsRow">
-                                                <rect key="frame" x="0.0" y="225" width="374" height="60"/>
+                                                <rect key="frame" x="0.0" y="158" width="374" height="64"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cl3-Ui-l9b">
-                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="196" height="64"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right.circle" catalog="system" highlightedImage="arrow.right.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="yBF-lG-pjC">
-                                                        <rect key="frame" x="314" y="0.5" width="60" height="59"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="yBF-lG-pjC" secondAttribute="height" multiplier="1:1" id="u4f-wt-dFv"/>
-                                                        </constraints>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextArrow" translatesAutoresizingMaskIntoConstraints="NO" id="yBF-lG-pjC">
+                                                        <rect key="frame" x="307" y="0.0" width="67" height="64"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9h-b7-GCS">
-                                                        <rect key="frame" x="314" y="0.0" width="60" height="60"/>
+                                                        <rect key="frame" x="307" y="0.0" width="67" height="64"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
@@ -175,7 +171,7 @@
                                                     <constraint firstItem="yBF-lG-pjC" firstAttribute="height" secondItem="DcZ-Yb-pTw" secondAttribute="height" id="u7T-Wf-p7V"/>
                                                     <constraint firstItem="W9h-b7-GCS" firstAttribute="trailing" secondItem="yBF-lG-pjC" secondAttribute="trailing" id="uCF-gT-DHD"/>
                                                     <constraint firstItem="Cl3-Ui-l9b" firstAttribute="height" secondItem="DcZ-Yb-pTw" secondAttribute="height" id="usL-mf-jqA"/>
-                                                    <constraint firstAttribute="height" constant="60" id="w6w-9l-fFI"/>
+                                                    <constraint firstAttribute="height" constant="64" id="w6w-9l-fFI"/>
                                                     <constraint firstAttribute="trailing" secondItem="yBF-lG-pjC" secondAttribute="trailing" id="wOl-xi-6Yr"/>
                                                     <constraint firstItem="Cl3-Ui-l9b" firstAttribute="leading" secondItem="DcZ-Yb-pTw" secondAttribute="leading" id="yct-Zh-zrc"/>
                                                     <constraint firstItem="Cl3-Ui-l9b" firstAttribute="centerY" secondItem="DcZ-Yb-pTw" secondAttribute="centerY" id="zXs-aQ-xxs"/>
@@ -183,44 +179,52 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yY-09-caZ">
-                                        <rect key="frame" x="112" y="654" width="190" height="70"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonBacking" translatesAutoresizingMaskIntoConstraints="NO" id="gzA-8g-vgh">
+                                        <rect key="frame" x="79" y="660" width="256" height="64"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="bjA-Cf-QaQ"/>
+                                            <constraint firstAttribute="height" constant="64" id="4mD-pN-Occ"/>
+                                            <constraint firstAttribute="width" constant="256" id="BhG-Cn-qcz"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Play"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Play" cornerStyle="capsule">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="50"/>
-                                            <directionalEdgeInsets key="contentInsets" top="5" leading="50" bottom="5" trailing="50"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="E2A-WK-lNC">
+                                        <rect key="frame" x="79" y="656" width="256" height="60.5"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                        <color key="textColor" name="happyOrange"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxq-ej-Gtf">
+                                        <rect key="frame" x="79" y="660" width="256" height="64"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
-                                            <action selector="dragOutsidePlayButton:" destination="BV1-FR-VrT" eventType="touchDragOutside" id="XEb-S9-INZ"/>
-                                            <segue destination="iA4-wZ-zkS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="X05-Rw-WXg"/>
+                                            <segue destination="iA4-wZ-zkS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="rm3-bf-BX9"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="nNP-2r-Zfw" firstAttribute="top" secondItem="655-8N-fqc" secondAttribute="bottom" constant="10" id="8Vb-ET-kFm"/>
+                                    <constraint firstItem="nNP-2r-Zfw" firstAttribute="top" secondItem="655-8N-fqc" secondAttribute="bottom" constant="35" id="8Vb-ET-kFm"/>
                                     <constraint firstItem="655-8N-fqc" firstAttribute="centerX" secondItem="K4h-dg-Xx2" secondAttribute="centerX" id="CYz-hl-dOC"/>
-                                    <constraint firstItem="0yY-09-caZ" firstAttribute="centerX" secondItem="K4h-dg-Xx2" secondAttribute="centerX" id="ClZ-db-dof"/>
                                     <constraint firstItem="655-8N-fqc" firstAttribute="top" secondItem="fTS-Os-pos" secondAttribute="bottom" constant="5" id="DF3-uQ-ict"/>
+                                    <constraint firstItem="E2A-WK-lNC" firstAttribute="top" secondItem="gzA-8g-vgh" secondAttribute="top" constant="-4" id="GQF-LN-5l0"/>
                                     <constraint firstItem="nNP-2r-Zfw" firstAttribute="leading" secondItem="K4h-dg-Xx2" secondAttribute="leading" constant="20" id="Lsi-Bx-4NG"/>
-                                    <constraint firstAttribute="bottom" secondItem="0yY-09-caZ" secondAttribute="bottom" constant="50" id="MOF-0d-HFA"/>
-                                    <constraint firstItem="0yY-09-caZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nNP-2r-Zfw" secondAttribute="bottom" constant="15" id="iyG-W2-VgT"/>
+                                    <constraint firstItem="Xxq-ej-Gtf" firstAttribute="top" secondItem="gzA-8g-vgh" secondAttribute="top" id="WVF-MS-bOX"/>
+                                    <constraint firstItem="E2A-WK-lNC" firstAttribute="leading" secondItem="gzA-8g-vgh" secondAttribute="leading" id="b7g-JE-38P"/>
+                                    <constraint firstItem="Xxq-ej-Gtf" firstAttribute="leading" secondItem="gzA-8g-vgh" secondAttribute="leading" id="bLn-ee-M8g"/>
+                                    <constraint firstItem="gzA-8g-vgh" firstAttribute="centerX" secondItem="K4h-dg-Xx2" secondAttribute="centerX" id="e2T-Q6-scj"/>
+                                    <constraint firstAttribute="bottom" secondItem="gzA-8g-vgh" secondAttribute="bottom" constant="50" id="fue-n0-9yx"/>
+                                    <constraint firstItem="Xxq-ej-Gtf" firstAttribute="bottom" secondItem="gzA-8g-vgh" secondAttribute="bottom" id="gS5-3V-lhg"/>
+                                    <constraint firstItem="E2A-WK-lNC" firstAttribute="bottom" secondItem="gzA-8g-vgh" secondAttribute="bottom" constant="-7.5" id="jmx-eE-fJc"/>
+                                    <constraint firstItem="gzA-8g-vgh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nNP-2r-Zfw" secondAttribute="bottom" constant="15" id="mAW-Nn-Ms3"/>
                                     <constraint firstAttribute="trailing" secondItem="nNP-2r-Zfw" secondAttribute="trailing" constant="20" id="n7y-cG-qMW"/>
                                     <constraint firstItem="fTS-Os-pos" firstAttribute="centerX" secondItem="K4h-dg-Xx2" secondAttribute="centerX" id="n8d-cJ-8i4"/>
                                     <constraint firstItem="fTS-Os-pos" firstAttribute="top" secondItem="K4h-dg-Xx2" secondAttribute="top" priority="750" id="qLz-o7-uzl"/>
+                                    <constraint firstItem="Xxq-ej-Gtf" firstAttribute="trailing" secondItem="gzA-8g-vgh" secondAttribute="trailing" id="x5Q-eM-eMs"/>
+                                    <constraint firstItem="E2A-WK-lNC" firstAttribute="trailing" secondItem="gzA-8g-vgh" secondAttribute="trailing" id="yK1-Pu-6rP"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
-                        <color key="backgroundColor" name="bgColour"/>
+                        <color key="backgroundColor" name="happyOrange"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K4h-dg-Xx2" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" id="3Ej-Pd-ELA"/>
@@ -231,16 +235,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="f2m-Ek-ZKs">
                         <barButtonItem key="backBarButtonItem" title=" " id="GYD-Sl-kRC">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="offWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="musicButton" destination="SVX-W9-fLB" id="BDe-Tf-qX2"/>
-                        <outlet property="nightButton" destination="YKB-pv-8qS" id="q7J-im-BVS"/>
-                        <outlet property="playButton" destination="0yY-09-caZ" id="I2O-fL-n9c"/>
+                        <outlet property="musicOnOffTxt" destination="ITg-t8-et3" id="9hB-g0-gqG"/>
                         <outlet property="shiftTitletxt" destination="655-8N-fqc" id="c2d-c3-7bz"/>
                         <outlet property="superView" destination="3se-qz-xqx" id="4NS-8e-nBT"/>
-                        <outlet property="tutorialButton" destination="7em-bO-05o" id="WHo-pL-Fgc"/>
+                        <outlet property="tutorialOnOffTxt" destination="PoS-FQ-pXO" id="AM4-OL-OFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -272,12 +274,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gq5-Ta-zjC" userLabel="optionsRow">
-                                <rect key="frame" x="20" y="88" width="374" height="60"/>
+                                <rect key="frame" x="20" y="88" width="374" height="73.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHr-DV-lx7">
-                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="215.5" height="73.5"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="55"/>
+                                        <color key="textColor" name="offWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -287,30 +289,23 @@
                                     <constraint firstItem="sHr-DV-lx7" firstAttribute="height" secondItem="Gq5-Ta-zjC" secondAttribute="height" id="Z0h-q7-eUL"/>
                                     <constraint firstItem="sHr-DV-lx7" firstAttribute="leading" secondItem="Gq5-Ta-zjC" secondAttribute="leading" id="fFz-c3-INz"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sHr-DV-lx7" secondAttribute="trailing" constant="10" id="i6j-BB-JcA"/>
-                                    <constraint firstAttribute="height" constant="60" id="pmA-Ex-xcN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-zP-3Ek" userLabel="statsRow">
-                                <rect key="frame" x="20" y="173" width="374" height="60"/>
+                                <rect key="frame" x="20" y="166.5" width="374" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGb-FG-OMF">
-                                        <rect key="frame" x="0.0" y="0.0" width="242" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="18S-9p-sJ0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="oGb-FG-OMF">
+                                        <rect key="frame" x="0.0" y="5.5" width="237" height="53.5"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                        <color key="textColor" name="offWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right.circle" catalog="system" highlightedImage="arrow.right.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="TA7-SM-oyL">
-                                        <rect key="frame" x="314" y="0.5" width="60" height="59"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="TA7-SM-oyL" secondAttribute="height" multiplier="1:1" id="Ayq-6Z-MxK"/>
-                                        </constraints>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextArrow" translatesAutoresizingMaskIntoConstraints="NO" id="TA7-SM-oyL">
+                                        <rect key="frame" x="307" y="0.0" width="67" height="64"/>
+                                        <color key="tintColor" name="offWhite"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIf-g0-6E7">
-                                        <rect key="frame" x="314" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="307" y="0.0" width="67" height="64"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -323,38 +318,31 @@
                                     <constraint firstItem="TA7-SM-oyL" firstAttribute="centerY" secondItem="oGb-FG-OMF" secondAttribute="centerY" id="6cN-yd-awr"/>
                                     <constraint firstItem="oGb-FG-OMF" firstAttribute="centerY" secondItem="uvV-zP-3Ek" secondAttribute="centerY" id="7jx-ZF-oMM"/>
                                     <constraint firstItem="TA7-SM-oyL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oGb-FG-OMF" secondAttribute="trailing" constant="5" id="AGk-3L-dXO"/>
+                                    <constraint firstItem="TA7-SM-oyL" firstAttribute="height" secondItem="uvV-zP-3Ek" secondAttribute="height" id="EHB-n1-XnZ"/>
                                     <constraint firstItem="fIf-g0-6E7" firstAttribute="bottom" secondItem="TA7-SM-oyL" secondAttribute="bottom" id="PV1-Wh-Rej"/>
-                                    <constraint firstAttribute="height" constant="60" id="TcJ-RU-jGP"/>
+                                    <constraint firstAttribute="height" constant="64" id="TcJ-RU-jGP"/>
                                     <constraint firstItem="fIf-g0-6E7" firstAttribute="leading" secondItem="TA7-SM-oyL" secondAttribute="leading" id="VON-Mu-CpG"/>
                                     <constraint firstItem="fIf-g0-6E7" firstAttribute="top" secondItem="TA7-SM-oyL" secondAttribute="top" id="XhD-E5-1wa"/>
                                     <constraint firstAttribute="trailing" secondItem="TA7-SM-oyL" secondAttribute="trailing" id="nZk-HM-SAU"/>
                                     <constraint firstItem="oGb-FG-OMF" firstAttribute="leading" secondItem="uvV-zP-3Ek" secondAttribute="leading" id="vPe-6Z-ezi"/>
-                                    <constraint firstItem="TA7-SM-oyL" firstAttribute="height" secondItem="oGb-FG-OMF" secondAttribute="height" id="wXA-Nd-oVN"/>
                                     <constraint firstItem="fIf-g0-6E7" firstAttribute="trailing" secondItem="TA7-SM-oyL" secondAttribute="trailing" id="xLt-GX-TRW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aq-Uh-Ubz" userLabel="feedbackRow">
-                                <rect key="frame" x="20" y="248" width="374" height="60"/>
+                                <rect key="frame" x="20" y="245.5" width="374" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coA-eC-BZ3">
-                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="c3C-C1-40o"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="coA-eC-BZ3">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="64"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                        <color key="textColor" name="offWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right.circle" catalog="system" highlightedImage="arrow.right.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="CIm-lt-HCH">
-                                        <rect key="frame" x="314" y="0.5" width="60" height="59"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="CIm-lt-HCH" secondAttribute="height" multiplier="1:1" id="0Lh-oK-Ene"/>
-                                            <constraint firstAttribute="height" constant="60" id="onQ-pA-vyY"/>
-                                        </constraints>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextArrow" translatesAutoresizingMaskIntoConstraints="NO" id="CIm-lt-HCH">
+                                        <rect key="frame" x="307" y="0.0" width="67" height="64"/>
+                                        <color key="tintColor" name="offWhite"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBJ-U2-Qx3">
-                                        <rect key="frame" x="314" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="307" y="0.0" width="67" height="64"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -364,6 +352,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="CIm-lt-HCH" firstAttribute="height" secondItem="8aq-Uh-Ubz" secondAttribute="height" id="6eg-mF-oMf"/>
                                     <constraint firstItem="bBJ-U2-Qx3" firstAttribute="top" secondItem="CIm-lt-HCH" secondAttribute="top" id="BlY-LK-zU4"/>
                                     <constraint firstItem="bBJ-U2-Qx3" firstAttribute="leading" secondItem="CIm-lt-HCH" secondAttribute="leading" id="CjE-mM-oO8"/>
                                     <constraint firstItem="bBJ-U2-Qx3" firstAttribute="bottom" secondItem="CIm-lt-HCH" secondAttribute="bottom" id="K16-QK-v88"/>
@@ -374,12 +363,12 @@
                                     <constraint firstItem="CIm-lt-HCH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="coA-eC-BZ3" secondAttribute="trailing" constant="5" id="a16-ur-26Y"/>
                                     <constraint firstItem="coA-eC-BZ3" firstAttribute="centerY" secondItem="8aq-Uh-Ubz" secondAttribute="centerY" id="ghb-TZ-jaD"/>
                                     <constraint firstAttribute="trailing" secondItem="CIm-lt-HCH" secondAttribute="trailing" id="qae-By-hqf"/>
-                                    <constraint firstAttribute="height" constant="60" id="skd-wc-qIP"/>
+                                    <constraint firstAttribute="height" constant="64" id="skd-wc-qIP"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NZo-MA-1SU"/>
-                        <color key="backgroundColor" name="bgColour"/>
+                        <color key="backgroundColor" name="happyOrange"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NZo-MA-1SU" firstAttribute="trailing" secondItem="uvV-zP-3Ek" secondAttribute="trailing" constant="20" id="CB6-m8-5oq"/>
@@ -390,17 +379,14 @@
                             <constraint firstItem="uvV-zP-3Ek" firstAttribute="leading" secondItem="NZo-MA-1SU" secondAttribute="leading" constant="20" id="Xtb-mD-po1"/>
                             <constraint firstItem="NZo-MA-1SU" firstAttribute="trailing" secondItem="8aq-Uh-Ubz" secondAttribute="trailing" constant="20" id="p7L-co-vwV"/>
                             <constraint firstItem="NZo-MA-1SU" firstAttribute="trailing" secondItem="Gq5-Ta-zjC" secondAttribute="trailing" constant="20" id="qTY-wh-ogi"/>
-                            <constraint firstItem="uvV-zP-3Ek" firstAttribute="top" secondItem="Gq5-Ta-zjC" secondAttribute="bottom" constant="25" id="vpS-1R-A50"/>
+                            <constraint firstItem="uvV-zP-3Ek" firstAttribute="top" secondItem="Gq5-Ta-zjC" secondAttribute="bottom" constant="5" id="vpS-1R-A50"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="7Gw-xc-GkK">
                         <barButtonItem key="backBarButtonItem" title=" " id="Pja-Zg-PF7">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="offWhite"/>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="superView" destination="6Rd-qC-Cfp" id="14s-2p-CbT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AwM-FP-PTk" sceneMemberID="firstResponder"/>
             </objects>
@@ -418,9 +404,9 @@
                                 <rect key="frame" x="20" y="88" width="374" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXH-FV-pIP">
-                                        <rect key="frame" x="0.0" y="0.0" width="114" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="60"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="55"/>
+                                        <color key="textColor" name="offWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -434,30 +420,24 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fi3-UP-OHm">
-                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
+                                <rect key="frame" x="0.0" y="153" width="414" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-1S-wJ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="560"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="565"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-ak-mly" userLabel="hiRoundRow">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Round" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Xa-3D-nmE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="ker-ss-Hbz"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="jl5-nm-IwG">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="uWX-08-i2q"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="53.5" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -470,28 +450,21 @@
                                                     <constraint firstAttribute="trailing" secondItem="jl5-nm-IwG" secondAttribute="trailing" id="ZRF-Qo-Dly"/>
                                                     <constraint firstItem="jl5-nm-IwG" firstAttribute="leading" secondItem="hrx-ak-mly" secondAttribute="leading" id="ZS5-vK-xvV"/>
                                                     <constraint firstItem="1Xa-3D-nmE" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="top" id="bcC-MI-1Eh"/>
-                                                    <constraint firstAttribute="height" constant="100" id="qgm-x0-K4S"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02t-lU-h1a" userLabel="gamesPlayedRow">
-                                                <rect key="frame" x="20" y="110" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="112" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games Played" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-JG-no4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Ilo-Xp-Pf5"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-pR-oZo">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="FNL-3t-6sY"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="53.5" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -502,30 +475,23 @@
                                                     <constraint firstItem="5fg-pR-oZo" firstAttribute="top" secondItem="bwA-JG-no4" secondAttribute="bottom" id="TDW-MV-AoV"/>
                                                     <constraint firstAttribute="trailing" secondItem="bwA-JG-no4" secondAttribute="trailing" id="asW-cc-6sA"/>
                                                     <constraint firstItem="bwA-JG-no4" firstAttribute="top" secondItem="02t-lU-h1a" secondAttribute="top" id="dQn-AL-DZw"/>
-                                                    <constraint firstAttribute="height" constant="100" id="eZs-Qb-Kzl"/>
                                                     <constraint firstAttribute="bottom" secondItem="5fg-pR-oZo" secondAttribute="bottom" id="gvY-3q-Pjk"/>
                                                     <constraint firstItem="bwA-JG-no4" firstAttribute="leading" secondItem="02t-lU-h1a" secondAttribute="leading" id="mIe-Yf-QTk"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDZ-Ie-apK" userLabel="shapesDestroyedRow">
-                                                <rect key="frame" x="20" y="220" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="224" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shapes Destoryed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ln1-JC-b8R">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="0OW-85-Acz"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="oU7-9i-uOT">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="qzh-7o-tlD"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="53.5" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -533,7 +499,6 @@
                                                 <constraints>
                                                     <constraint firstItem="oU7-9i-uOT" firstAttribute="top" secondItem="Ln1-JC-b8R" secondAttribute="bottom" id="BRb-YO-IeE"/>
                                                     <constraint firstAttribute="bottom" secondItem="oU7-9i-uOT" secondAttribute="bottom" id="IhJ-Ne-T8N"/>
-                                                    <constraint firstAttribute="height" constant="100" id="Mhn-C1-gKg"/>
                                                     <constraint firstItem="Ln1-JC-b8R" firstAttribute="top" secondItem="jDZ-Ie-apK" secondAttribute="top" id="cEI-LK-x77"/>
                                                     <constraint firstItem="Ln1-JC-b8R" firstAttribute="leading" secondItem="jDZ-Ie-apK" secondAttribute="leading" id="oyH-da-MvL"/>
                                                     <constraint firstAttribute="trailing" secondItem="oU7-9i-uOT" secondAttribute="trailing" id="rGt-Zw-3zF"/>
@@ -542,30 +507,23 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-37-ZLh" userLabel="linesDestroyedRow">
-                                                <rect key="frame" x="20" y="330" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="336" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lines Hit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-cD-VRB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="HOS-Ld-QC9"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="dFs-In-bbs">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="7rC-G3-W9F"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="53.5" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="5EY-li-jd4"/>
                                                     <constraint firstAttribute="trailing" secondItem="bUf-cD-VRB" secondAttribute="trailing" id="cgD-jf-1k6"/>
                                                     <constraint firstItem="dFs-In-bbs" firstAttribute="top" secondItem="bUf-cD-VRB" secondAttribute="bottom" id="dK5-8u-ZsG"/>
                                                     <constraint firstItem="dFs-In-bbs" firstAttribute="leading" secondItem="Wzd-37-ZLh" secondAttribute="leading" id="gb2-9T-Ijd"/>
@@ -576,24 +534,18 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmz-3Q-Fk0" userLabel="ballsFiredRow">
-                                                <rect key="frame" x="20" y="440" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="448" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balls Fired" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="fJu-Xe-Daw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="MR4-Eh-Yg7"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="hon-h9-N1T">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Wkp-KL-D2a"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <rect key="frame" x="0.0" y="53.5" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -601,7 +553,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="fJu-Xe-Daw" secondAttribute="trailing" id="4wj-b4-PSi"/>
                                                     <constraint firstItem="fJu-Xe-Daw" firstAttribute="top" secondItem="Fmz-3Q-Fk0" secondAttribute="top" id="G1f-MZ-AxI"/>
-                                                    <constraint firstAttribute="height" constant="100" id="QSI-rs-rII"/>
                                                     <constraint firstItem="fJu-Xe-Daw" firstAttribute="leading" secondItem="Fmz-3Q-Fk0" secondAttribute="leading" id="Zs7-jk-3nT"/>
                                                     <constraint firstAttribute="bottom" secondItem="hon-h9-N1T" secondAttribute="bottom" id="fJr-qA-hrO"/>
                                                     <constraint firstItem="hon-h9-N1T" firstAttribute="top" secondItem="fJu-Xe-Daw" secondAttribute="bottom" id="rXs-rl-nRR"/>
@@ -618,13 +569,13 @@
                                             <constraint firstItem="jDZ-Ie-apK" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="BlK-yR-MQn"/>
                                             <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="IIZ-HJ-VYX"/>
                                             <constraint firstAttribute="trailing" secondItem="hrx-ak-mly" secondAttribute="trailing" constant="20" id="KEH-x8-dQu"/>
-                                            <constraint firstItem="jDZ-Ie-apK" firstAttribute="top" secondItem="02t-lU-h1a" secondAttribute="bottom" constant="10" id="KLN-9F-isa"/>
-                                            <constraint firstItem="02t-lU-h1a" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="bottom" constant="10" id="O6I-mU-gVj"/>
+                                            <constraint firstItem="jDZ-Ie-apK" firstAttribute="top" secondItem="02t-lU-h1a" secondAttribute="bottom" constant="5" id="KLN-9F-isa"/>
+                                            <constraint firstItem="02t-lU-h1a" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="bottom" constant="5" id="O6I-mU-gVj"/>
                                             <constraint firstAttribute="trailing" secondItem="02t-lU-h1a" secondAttribute="trailing" constant="20" id="Owm-pI-AP5"/>
                                             <constraint firstAttribute="trailing" secondItem="Fmz-3Q-Fk0" secondAttribute="trailing" constant="20" id="Oym-Hf-hbj"/>
-                                            <constraint firstAttribute="bottom" secondItem="Fmz-3Q-Fk0" secondAttribute="bottom" constant="20" id="WAj-Vx-1Do"/>
-                                            <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="top" secondItem="Wzd-37-ZLh" secondAttribute="bottom" constant="10" id="Wiv-3K-0l4"/>
-                                            <constraint firstItem="Wzd-37-ZLh" firstAttribute="top" secondItem="jDZ-Ie-apK" secondAttribute="bottom" constant="10" id="gW4-P7-RK8"/>
+                                            <constraint firstAttribute="bottom" secondItem="Fmz-3Q-Fk0" secondAttribute="bottom" constant="10" id="WAj-Vx-1Do"/>
+                                            <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="top" secondItem="Wzd-37-ZLh" secondAttribute="bottom" constant="5" id="Wiv-3K-0l4"/>
+                                            <constraint firstItem="Wzd-37-ZLh" firstAttribute="top" secondItem="jDZ-Ie-apK" secondAttribute="bottom" constant="5" id="gW4-P7-RK8"/>
                                             <constraint firstItem="hrx-ak-mly" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="iOU-Sf-n1B"/>
                                             <constraint firstItem="hrx-ak-mly" firstAttribute="top" secondItem="gYP-1S-wJ9" secondAttribute="top" id="ogG-o8-WAa"/>
                                         </constraints>
@@ -642,11 +593,11 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2W0-Sn-hGE"/>
-                        <color key="backgroundColor" name="bgColour"/>
+                        <color key="backgroundColor" name="happyOrange"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2W0-Sn-hGE" firstAttribute="bottom" secondItem="fi3-UP-OHm" secondAttribute="bottom" id="080-oU-aj7"/>
-                            <constraint firstItem="fi3-UP-OHm" firstAttribute="top" secondItem="ZGO-iK-6QF" secondAttribute="bottom" id="0p9-Kg-49r"/>
+                            <constraint firstItem="fi3-UP-OHm" firstAttribute="top" secondItem="ZGO-iK-6QF" secondAttribute="bottom" constant="5" id="0p9-Kg-49r"/>
                             <constraint firstItem="ZGO-iK-6QF" firstAttribute="leading" secondItem="2W0-Sn-hGE" secondAttribute="leading" constant="20" id="1nd-Xy-lK5"/>
                             <constraint firstItem="ZGO-iK-6QF" firstAttribute="top" secondItem="2W0-Sn-hGE" secondAttribute="top" id="Bcf-RO-MSL"/>
                             <constraint firstItem="2W0-Sn-hGE" firstAttribute="trailing" secondItem="ZGO-iK-6QF" secondAttribute="trailing" constant="20" id="PSm-4B-upf"/>
@@ -661,7 +612,6 @@
                         <outlet property="hiRoundtxt" destination="jl5-nm-IwG" id="LCP-gm-ZfI"/>
                         <outlet property="linesDestroyedtxt" destination="dFs-In-bbs" id="RM1-nZ-EYO"/>
                         <outlet property="shapesDestroyedtxt" destination="oU7-9i-uOT" id="Fgx-GL-9RM"/>
-                        <outlet property="superView" destination="ULt-8Q-tvf" id="FF7-hV-vkE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRS-IZ-HH4" sceneMemberID="firstResponder"/>
@@ -680,9 +630,9 @@
                                 <rect key="frame" x="20" y="88" width="374" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWE-oI-nTg">
-                                        <rect key="frame" x="0.0" y="0.0" width="215.5" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="261.5" height="60"/>
+                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="55"/>
+                                        <color key="textColor" name="offWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -696,53 +646,61 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="dDR-5Q-0YX">
-                                <rect key="frame" x="20" y="158" width="374" height="334.5"/>
+                                <rect key="frame" x="20" y="158" width="374" height="595"/>
                                 <string key="text">Feedback is always appreciated. Whether it’s a bug report, a recommendation, or just a comment we are always happy to hear from our users.</string>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                <color key="textColor" name="offWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd6-cZ-duo">
-                                <rect key="frame" x="61" y="742" width="292" height="70"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonBacking" translatesAutoresizingMaskIntoConstraints="NO" id="gIs-Yx-zvU">
+                                <rect key="frame" x="79" y="773" width="256" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="1Xb-EC-GdT"/>
+                                    <constraint firstAttribute="height" constant="64" id="TAR-iZ-KGj"/>
+                                    <constraint firstAttribute="width" constant="256" id="Ucz-xS-hLY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Play"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Contact Us" cornerStyle="capsule">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
-                                    <directionalEdgeInsets key="contentInsets" top="5" leading="50" bottom="5" trailing="50"/>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="jed-vd-Gud">
+                                <rect key="frame" x="79" y="770" width="256" height="65"/>
+                                <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="50"/>
+                                <color key="textColor" name="happyOrange"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uC-DX-BFf">
+                                <rect key="frame" x="79" y="773" width="256" height="64"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="contactUsButtonPress:" destination="IBR-TJ-WuQ" eventType="touchUpInside" id="dXU-c9-ewq"/>
-                                    <action selector="dragOutsidePlayButton:" destination="IBR-TJ-WuQ" eventType="touchUpInside" id="PNj-04-D7N"/>
+                                    <action selector="contactUsButtonPress:" destination="IBR-TJ-WuQ" eventType="touchUpInside" id="YRH-sr-Ua2"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JDc-8p-ZTn"/>
-                        <color key="backgroundColor" name="bgColour"/>
+                        <color key="backgroundColor" name="happyOrange"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JDc-8p-ZTn" firstAttribute="bottom" secondItem="Wd6-cZ-duo" secondAttribute="bottom" constant="50" id="0L1-Cj-fDQ"/>
+                            <constraint firstItem="5uC-DX-BFf" firstAttribute="top" secondItem="gIs-Yx-zvU" secondAttribute="top" id="L9y-Wu-4E3"/>
+                            <constraint firstItem="5uC-DX-BFf" firstAttribute="leading" secondItem="gIs-Yx-zvU" secondAttribute="leading" id="P4K-bi-NWj"/>
                             <constraint firstItem="JDc-8p-ZTn" firstAttribute="trailing" secondItem="P1f-CV-VX5" secondAttribute="trailing" constant="20" id="QQk-vD-Jb4"/>
                             <constraint firstItem="P1f-CV-VX5" firstAttribute="leading" secondItem="JDc-8p-ZTn" secondAttribute="leading" constant="20" id="Xf7-mh-B9Y"/>
                             <constraint firstItem="dDR-5Q-0YX" firstAttribute="trailing" secondItem="JDc-8p-ZTn" secondAttribute="trailing" constant="-20" id="ZGU-oF-Vte"/>
-                            <constraint firstItem="Wd6-cZ-duo" firstAttribute="centerX" secondItem="JDc-8p-ZTn" secondAttribute="centerX" id="auu-Zg-mgk"/>
                             <constraint firstItem="dDR-5Q-0YX" firstAttribute="top" secondItem="P1f-CV-VX5" secondAttribute="bottom" constant="10" id="ay8-GW-SWo"/>
-                            <constraint firstItem="Wd6-cZ-duo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dDR-5Q-0YX" secondAttribute="bottom" constant="20" id="gbd-Dg-EJG"/>
+                            <constraint firstItem="5uC-DX-BFf" firstAttribute="trailing" secondItem="gIs-Yx-zvU" secondAttribute="trailing" id="eu2-43-1BT"/>
+                            <constraint firstItem="jed-vd-Gud" firstAttribute="bottom" secondItem="gIs-Yx-zvU" secondAttribute="bottom" constant="-2" id="gGK-cD-QnB"/>
+                            <constraint firstItem="gIs-Yx-zvU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dDR-5Q-0YX" secondAttribute="bottom" constant="20" id="j9I-7r-Zk1"/>
                             <constraint firstItem="P1f-CV-VX5" firstAttribute="top" secondItem="JDc-8p-ZTn" secondAttribute="top" id="mnK-3h-uoA"/>
+                            <constraint firstItem="gIs-Yx-zvU" firstAttribute="bottom" secondItem="JDc-8p-ZTn" secondAttribute="bottom" constant="-25" id="mo2-O0-UCc"/>
+                            <constraint firstItem="jed-vd-Gud" firstAttribute="top" secondItem="gIs-Yx-zvU" secondAttribute="top" constant="-3" id="qs4-lm-0WC"/>
                             <constraint firstItem="dDR-5Q-0YX" firstAttribute="leading" secondItem="JDc-8p-ZTn" secondAttribute="leading" constant="20" id="skA-Wh-icl"/>
+                            <constraint firstItem="5uC-DX-BFf" firstAttribute="bottom" secondItem="gIs-Yx-zvU" secondAttribute="bottom" id="sz2-Zw-GjJ"/>
+                            <constraint firstItem="jed-vd-Gud" firstAttribute="trailing" secondItem="gIs-Yx-zvU" secondAttribute="trailing" id="u0y-5q-vdR"/>
+                            <constraint firstItem="jed-vd-Gud" firstAttribute="leading" secondItem="gIs-Yx-zvU" secondAttribute="leading" id="uTs-ET-59p"/>
+                            <constraint firstItem="gIs-Yx-zvU" firstAttribute="centerX" secondItem="JDc-8p-ZTn" secondAttribute="centerX" id="ztP-hs-HVX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="tmR-Ym-ak8"/>
                     <connections>
-                        <outlet property="contactUsButton" destination="Wd6-cZ-duo" id="tid-Zm-z3a"/>
+                        <outlet property="contactUsButton" destination="5uC-DX-BFf" id="OVS-5f-eGN"/>
                         <outlet property="feedBackBodyTxt" destination="dDR-5Q-0YX" id="gJK-fh-k98"/>
-                        <outlet property="superView" destination="xpL-Qp-Zfr" id="En1-zN-PDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBg-Y7-ZL6" sceneMemberID="firstResponder"/>
@@ -751,10 +709,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.right.circle" catalog="system" width="128" height="121"/>
-        <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
-        <namedColor name="bgColour">
-            <color red="0.98400002717971802" green="0.91399997472763062" blue="0.49799999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="backArrow" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="buttonBacking" width="256" height="64"/>
+        <image name="nextArrow" width="64" height="64"/>
+        <namedColor name="happyOrange">
+            <color red="0.93333333333333335" green="0.60784313725490191" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="offWhite">
+            <color red="0.9137254901960784" green="0.84705882352941175" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

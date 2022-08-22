@@ -32,7 +32,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var totalTargets = 0
     var layers = 1
     var maxLayers = 3
-    var round = 17
+    var round = 0
     var set = 0
     var popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
     var masterNode = SKNode()
@@ -62,11 +62,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         loadStats()
         
-        //sets background
-        var nightMode = false
-        if UserDefaults.standard.object(forKey: "nightMode") != nil {
-            nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
-        }
         createGrounds(fgName: fgNames[0], bgName: bgNames[0], gSpawn: CGPoint(x: 0, y: 0))
         addChild(masterNode)
         

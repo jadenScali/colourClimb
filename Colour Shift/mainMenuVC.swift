@@ -33,38 +33,39 @@ var backGroundMusic: AVAudioPlayer? = {
 
 class mainMenuVC: UIViewController {
     
-    @IBOutlet weak var tutorialButton: UISwitch!
-    @IBOutlet weak var musicButton: UISwitch!
-    @IBOutlet weak var nightButton: UISwitch!
-    
     @IBOutlet var superView: UIView!
     @IBOutlet weak var shiftTitletxt: UILabel!
-    @IBOutlet weak var playButton: UIButton!
+    
+    @IBOutlet weak var musicOnOffTxt: UILabel!
+    var musicButtonOn = false
+    
+    @IBOutlet weak var tutorialOnOffTxt: UILabel!
+    var tutorialButtonOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playStopMusic()
-        determineColour()
         determineTutorialButton()
         
         if UserDefaults.standard.object(forKey: "musicIsPlaying") != nil {
             let musicOn = UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool
             if musicOn {
-                musicButton.isOn = true
+                musicButtonOn = false
+                musicOnOffTxt.text = "ON"
             } else if !musicOn {
-                musicButton.isOn = false
+                musicButtonOn = true
+                musicOnOffTxt.text = "OFF"
             }
         } else {
-            musicButton.isOn = true
+            musicButtonOn = true
+            musicOnOffTxt.text = "ON"
         }
     }
     
     override func viewDidLayoutSubviews() {
         
         currentTutorialPart = 1
-        determineColour()
-        determineTutorialButton()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         //if coming from gameVC completes animation
@@ -94,69 +95,40 @@ class mainMenuVC: UIViewController {
         return true
     }
     
-    @IBAction func musicSwitch(_ sender: UISwitch) {
+    @IBAction func musicOffOnTap(_ sender: Any) {
         
-        if sender.isOn {
+        if musicButtonOn {
             UserDefaults.standard.set(true, forKey: "musicIsPlaying")
             playStopMusic()
+            musicOnOffTxt.text = "ON"
             let haptic = UIImpactFeedbackGenerator(style: .soft)
             haptic.impactOccurred()
+            
+            musicButtonOn = false
         } else {
             UserDefaults.standard.set(false, forKey: "musicIsPlaying")
             playStopMusic()
+            musicOnOffTxt.text = "OFF"
             let haptic = UIImpactFeedbackGenerator(style: .soft)
             haptic.impactOccurred()
+            
+            musicButtonOn = true
         }
     }
     
-    @IBAction func nightSwitch(_ sender: UISwitch) {
+    @IBAction func tutorialOffOnTap(_ sender: Any) {
         
-        if sender.isOn {
-            UserDefaults.standard.set(true, forKey: "nightMode")
-            determineColour()
-        } else {
-            UserDefaults.standard.set(false, forKey: "nightMode")
-            determineColour()
-        }
-    }
-    
-    @IBAction func tutorialSwitch(_ sender: UISwitch) {
-        
-        if sender.isOn {
+        if tutorialButtonOn {
             UserDefaults.standard.set(true, forKey: "wantsTutorial")
+            tutorialOnOffTxt.text = "ON"
+            
+            tutorialButtonOn = false
         } else {
             UserDefaults.standard.set(false, forKey: "wantsTutorial")
+            tutorialOnOffTxt.text = "OFF"
+            
+            tutorialButtonOn = true
         }
-    }
-    
-    //fixes weird bug where button text forgets what colour it should be
-    @IBAction func dragOutsidePlayButton(_ sender: Any) {
-        
-        determineColour()
-    }
-    
-    func determineColour() {
-        
-        var nightMode = false
-        if UserDefaults.standard.object(forKey: "nightMode") != nil {
-            nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
-        }
-        
-        var colour = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
-        if nightMode {
-            colour = UIColor.black
-            nightButton.isOn = true
-        } else {
-            colour = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
-            nightButton.isOn = false
-        }
-        
-        superView.backgroundColor = colour
-        shiftTitletxt.textColor = colour
-        playButton.titleLabel?.textColor = colour
-        tutorialButton.thumbTintColor = colour
-        musicButton.thumbTintColor = colour
-        nightButton.thumbTintColor = colour
     }
     
     func determineTutorialButton() {
@@ -168,9 +140,9 @@ class mainMenuVC: UIViewController {
         }
         
         if wantsTutorial {
-            tutorialButton.isOn = true
+            tutorialOnOffTxt.text = "ON"
         } else {
-            tutorialButton.isOn = false
+            tutorialOnOffTxt.text = "OFF"
         }
     }
     
