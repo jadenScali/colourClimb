@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7951DB0B28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7951DB0A28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf */; };
 		798FD2CC2884879900779196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD2CB2884879900779196 /* AppDelegate.swift */; };
 		798FD2CE2884879900779196 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 798FD2CD2884879900779196 /* GameScene.sks */; };
 		798FD2D22884879900779196 /* playScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD2D12884879900779196 /* playScene.swift */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7951DB0A28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MesseDuesseldorf-O1d3.ttf"; sourceTree = "<group>"; };
+		7951DB0C28B3319F003B2F24 /* Colour-Shift-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Colour-Shift-Info.plist"; sourceTree = SOURCE_ROOT; };
 		798FD2C82884879900779196 /* Colour Climb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Colour Climb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		798FD2CB2884879900779196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		798FD2CD2884879900779196 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 		798FD2CA2884879900779196 /* Colour Shift */ = {
 			isa = PBXGroup;
 			children = (
+				7951DB0C28B3319F003B2F24 /* Colour-Shift-Info.plist */,
+				7951DB0A28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf */,
 				79C1FEC72888D3F200656B2B /* colourShiftLofiSoundtrack.m4a */,
 				798FD2CB2884879900779196 /* AppDelegate.swift */,
 				79C1FED1288C96AD00656B2B /* TutorialScene.sks */,
@@ -157,6 +162,7 @@
 				798FD2D72884879900779196 /* Main.storyboard in Resources */,
 				79C1FED2288C96AD00656B2B /* TutorialScene.sks in Resources */,
 				798FD2CE2884879900779196 /* GameScene.sks in Resources */,
+				7951DB0B28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf in Resources */,
 				798FD2D92884879B00779196 /* Assets.xcassets in Resources */,
 				798FD2DC2884879B00779196 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -327,6 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K8G9267R4;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Colour-Shift-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -357,6 +364,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3K8G9267R4;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Colour-Shift-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

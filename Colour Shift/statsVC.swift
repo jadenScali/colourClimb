@@ -11,14 +11,12 @@ class statsVC: UIViewController {
 
     @IBOutlet var superView: UIView!
     
-    @IBOutlet weak var hiScoretxt: UILabel!
     @IBOutlet weak var hiRoundtxt: UILabel!
     @IBOutlet weak var gamesPlayedtxt: UILabel!
     @IBOutlet weak var shapesDestroyedtxt: UILabel!
     @IBOutlet weak var linesDestroyedtxt: UILabel!
     @IBOutlet weak var ballsFiredtxt: UILabel!
     
-    var hiScore = 0
     var hiRound = 0
     var gamesPlayed = 0
     var shapesDestroyed = 0
@@ -64,9 +62,6 @@ class statsVC: UIViewController {
     
     func loadStats() {
         
-        if UserDefaults.standard.object(forKey: "hiScore") != nil {
-            hiScore = UserDefaults.standard.object(forKey: "hiScore") as! Int
-        }
         if UserDefaults.standard.object(forKey: "hiRound") != nil {
             hiRound = UserDefaults.standard.object(forKey: "hiRound") as! Int
         }
@@ -88,7 +83,6 @@ class statsVC: UIViewController {
         
         loadStats()
         
-        hiScoretxt.text = "\(hiScore)"
         hiRoundtxt.text = "\(hiRound)"
         gamesPlayedtxt.text = "\(gamesPlayed)"
         shapesDestroyedtxt.text = "\(shapesDestroyed)"

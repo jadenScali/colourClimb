@@ -437,44 +437,10 @@
                                 <rect key="frame" x="0.0" y="148" width="414" height="714"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-1S-wJ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="670"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="560"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Md3-RK-4uW" userLabel="hiScoreRow">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="100"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HiScore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Yxt-vw-b8q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Jy8-Je-Qll"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="es0-Up-zrE">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="tr5-Ca-RQ9"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="es0-Up-zrE" firstAttribute="top" secondItem="Yxt-vw-b8q" secondAttribute="bottom" id="5E5-Fs-4k4"/>
-                                                    <constraint firstItem="Yxt-vw-b8q" firstAttribute="top" secondItem="Md3-RK-4uW" secondAttribute="top" id="5eO-En-ppC"/>
-                                                    <constraint firstAttribute="bottom" secondItem="es0-Up-zrE" secondAttribute="bottom" id="Aqr-aU-dGi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Yxt-vw-b8q" secondAttribute="trailing" id="Qfx-VA-WeJ"/>
-                                                    <constraint firstItem="Yxt-vw-b8q" firstAttribute="leading" secondItem="Md3-RK-4uW" secondAttribute="leading" id="VBJ-WK-dKD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="es0-Up-zrE" secondAttribute="trailing" id="Wfj-1K-vzH"/>
-                                                    <constraint firstAttribute="height" constant="100" id="nqM-bn-DX9"/>
-                                                    <constraint firstItem="es0-Up-zrE" firstAttribute="leading" secondItem="Md3-RK-4uW" secondAttribute="leading" id="qjP-uj-kB9"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-ak-mly" userLabel="hiRoundRow">
-                                                <rect key="frame" x="20" y="110" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Round" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Xa-3D-nmE">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -508,7 +474,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02t-lU-h1a" userLabel="gamesPlayedRow">
-                                                <rect key="frame" x="20" y="220" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="110" width="374" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games Played" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-JG-no4">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -542,7 +508,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDZ-Ie-apK" userLabel="shapesDestroyedRow">
-                                                <rect key="frame" x="20" y="330" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="220" width="374" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shapes Destoryed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ln1-JC-b8R">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -576,7 +542,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-37-ZLh" userLabel="linesDestroyedRow">
-                                                <rect key="frame" x="20" y="440" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="330" width="374" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lines Hit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-cD-VRB">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -610,7 +576,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmz-3Q-Fk0" userLabel="ballsFiredRow">
-                                                <rect key="frame" x="20" y="550" width="374" height="100"/>
+                                                <rect key="frame" x="20" y="440" width="374" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balls Fired" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="fJu-Xe-Daw">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -648,7 +614,6 @@
                                             <constraint firstItem="Wzd-37-ZLh" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="2Jn-Cr-Iw5"/>
                                             <constraint firstItem="02t-lU-h1a" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="4AT-DZ-fdA"/>
                                             <constraint firstAttribute="trailing" secondItem="jDZ-Ie-apK" secondAttribute="trailing" constant="20" id="5Dd-Pp-tc9"/>
-                                            <constraint firstItem="Md3-RK-4uW" firstAttribute="top" secondItem="gYP-1S-wJ9" secondAttribute="top" id="5vg-bR-gjM"/>
                                             <constraint firstAttribute="trailing" secondItem="Wzd-37-ZLh" secondAttribute="trailing" constant="20" id="BOS-Hg-hOR"/>
                                             <constraint firstItem="jDZ-Ie-apK" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="BlK-yR-MQn"/>
                                             <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="IIZ-HJ-VYX"/>
@@ -657,13 +622,11 @@
                                             <constraint firstItem="02t-lU-h1a" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="bottom" constant="10" id="O6I-mU-gVj"/>
                                             <constraint firstAttribute="trailing" secondItem="02t-lU-h1a" secondAttribute="trailing" constant="20" id="Owm-pI-AP5"/>
                                             <constraint firstAttribute="trailing" secondItem="Fmz-3Q-Fk0" secondAttribute="trailing" constant="20" id="Oym-Hf-hbj"/>
-                                            <constraint firstAttribute="trailing" secondItem="Md3-RK-4uW" secondAttribute="trailing" constant="20" id="Uav-Dg-tyT"/>
                                             <constraint firstAttribute="bottom" secondItem="Fmz-3Q-Fk0" secondAttribute="bottom" constant="20" id="WAj-Vx-1Do"/>
                                             <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="top" secondItem="Wzd-37-ZLh" secondAttribute="bottom" constant="10" id="Wiv-3K-0l4"/>
                                             <constraint firstItem="Wzd-37-ZLh" firstAttribute="top" secondItem="jDZ-Ie-apK" secondAttribute="bottom" constant="10" id="gW4-P7-RK8"/>
                                             <constraint firstItem="hrx-ak-mly" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="iOU-Sf-n1B"/>
-                                            <constraint firstItem="hrx-ak-mly" firstAttribute="top" secondItem="Md3-RK-4uW" secondAttribute="bottom" constant="10" id="vA6-BK-6Ot"/>
-                                            <constraint firstItem="Md3-RK-4uW" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="yFs-yf-RDv"/>
+                                            <constraint firstItem="hrx-ak-mly" firstAttribute="top" secondItem="gYP-1S-wJ9" secondAttribute="top" id="ogG-o8-WAa"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -696,7 +659,6 @@
                         <outlet property="ballsFiredtxt" destination="hon-h9-N1T" id="esN-R8-XWW"/>
                         <outlet property="gamesPlayedtxt" destination="5fg-pR-oZo" id="RIw-35-NBL"/>
                         <outlet property="hiRoundtxt" destination="jl5-nm-IwG" id="LCP-gm-ZfI"/>
-                        <outlet property="hiScoretxt" destination="es0-Up-zrE" id="QZA-88-KHX"/>
                         <outlet property="linesDestroyedtxt" destination="dFs-In-bbs" id="RM1-nZ-EYO"/>
                         <outlet property="shapesDestroyedtxt" destination="oU7-9i-uOT" id="Fgx-GL-9RM"/>
                         <outlet property="superView" destination="ULt-8Q-tvf" id="FF7-hV-vkE"/>

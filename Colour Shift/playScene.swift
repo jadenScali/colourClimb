@@ -15,8 +15,14 @@ var targetLines: [targetLine] = []
 class playScene: SKScene, SKPhysicsContactDelegate {
     
     var bgWidth: CGFloat = -1
-    var fgNames = ["forestFg", "highTreesFg", "highTreesFg", "highTreesFg"]
-    var bgNames = ["forestBg", "forestBg", "forestBg", "forestBg"]
+    var fgNames = ["forestFg", "highTreesFg", "highTreesFg", "highTreesFg", "treeTopsFg",
+                   "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyTransFg",
+                   "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyTransFg",
+                   "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyTransFg"]
+    var bgNames = ["forestBg", "forestBg", "forestBg", "forestBg", "forestBg",
+                   "blueSkyBg", "blueSkyBg", "blueSkyBg", "blueSkyBg", "blueSkyTransBg",
+                   "yellowSkyBg", "yellowSkyBg", "yellowSkyBg", "yellowSkyBg", "yellowSkyTransBg",
+                   "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyTransBg"]
     var groundGroups: [SKNode] = []
     
     //lower spinSpeed means it'll spin faster
@@ -26,23 +32,11 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var totalTargets = 0
     var layers = 1
     var maxLayers = 3
-    var points = 0
     var round = 0
     var set = 0
     var masterNode = SKNode()
-    lazy var pointstxt: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "HelveticaNeue-Thin")
-        label.fontSize = 100
-        label.zPosition = 1
-        label.color = SKColor.white
-        label.horizontalAlignmentMode = .center
-        label.verticalAlignmentMode = .baseline
-        label.text = "0"
-        return label
-    }()
     
     //for stats
-    var hiScore = 0
     var hiRound = 0
     var gamesPlayed = 0
     var shapesDestroyed = 0
@@ -61,6 +55,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         view.showsFPS = true
         view.showsNodeCount = true
+        //view.showsPhysics = true
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
@@ -97,8 +92,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         boarder.position = CGPoint(x: 0, y: 0)
         masterNode.addChild(boarder)
         
-        pointstxt.position = CGPoint(x: 0, y: -400)
-        masterNode.addChild(pointstxt)
         beginRound()
     }
     
@@ -114,12 +107,26 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         groundGroups += [grounds]
         
-        let fg = SKSpriteNode(imageNamed: fgName)
-        fg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
-        fg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        fg.position = gSpawn
-        fg.zPosition = -99
-        grounds.addChild(fg)
+        if fgName.first == "m" {
+            for i in 0...1 {
+                let mfg = SKSpriteNode(imageNamed: fgName)
+                mfg.name = "mfg"
+                mfg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
+                mfg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                mfg.position = CGPoint(x: CGFloat(i) * self.scene!.size.width, y: gSpawn.y)
+                mfg.zPosition = -99
+                
+                grounds.addChild(mfg)
+            }
+        } else {
+            let fg = SKSpriteNode(imageNamed: fgName)
+            fg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
+            fg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            fg.position = gSpawn
+            fg.zPosition = -99
+            
+            grounds.addChild(fg)
+        }
         
         for i in 0...1 {
             let bg = SKSpriteNode(imageNamed: bgName)
@@ -145,6 +152,15 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 
                 if node.position.x < -self.bgWidth + (self.scene?.size.width)! {
                     node.position.x += self.bgWidth * 2
+                }
+            }))
+            
+            grounds.enumerateChildNodes(withName: "mfg", using: ({
+                (node, error) in
+                node.position.x -= 1
+                
+                if node.position.x < -(self.scene?.size.width)! {
+                    node.position.x += (self.scene?.size.width)! * 2
                 }
             }))
         }
@@ -317,15 +333,15 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             }
             
             shape.run(.sequence([
-                SKAction.scale(by: 0.05, duration: 0),
+                SKAction.scale(by: 0.01, duration: 0),
                 SKAction.wait(forDuration: 1),
-                SKAction.scale(by: 20, duration: 1)
+                SKAction.scale(by: 100, duration: 1)
             ]))
         } else {
             shape.isHidden = false
             shape.run(.sequence([
-                SKAction.scale(by: 0.05, duration: 0),
-                SKAction.scale(by: 20, duration: 1)
+                SKAction.scale(by: 0.01, duration: 0),
+                SKAction.scale(by: 100, duration: 1)
             ]))
         }
         
@@ -336,11 +352,13 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         ballsFired += 1
         
-        let texture = SKTexture(imageNamed: "ball")
+        let texture = SKTexture(imageNamed: "colourClimbBall")
+        let hitBoxTexture = SKTexture(imageNamed: "circle")
         let ball = SKSpriteNode(texture: texture)
+        ball.size = CGSize(width: 40, height: 40)
         ball.name = "ball"
         ball.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        ball.physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+        ball.physicsBody = SKPhysicsBody(texture: hitBoxTexture, size: hitBoxTexture.size())
         ball.physicsBody?.isDynamic = true
         ball.physicsBody?.allowsRotation = false
         ball.physicsBody?.friction = 0
@@ -372,9 +390,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func loadStats() {
         
-        if UserDefaults.standard.object(forKey: "hiScore") != nil {
-            hiScore = UserDefaults.standard.object(forKey: "hiScore") as! Int
-        }
         if UserDefaults.standard.object(forKey: "hiRound") != nil {
             hiRound = UserDefaults.standard.object(forKey: "hiRound") as! Int
         }
@@ -394,10 +409,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func updateStats() {
         
-        if points > hiScore {
-            hiScore = points
-            UserDefaults.standard.set(hiScore, forKey: "hiScore")
-        }
         if round > hiRound {
             hiRound = round
             UserDefaults.standard.set(hiRound, forKey: "hiRound")
@@ -408,44 +419,39 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         UserDefaults.standard.set(ballsFired, forKey: "ballsFired")
     }
     
-    func increasePoints(typeHit: ShapeType, popUpPos: CGPoint?) {
+    func informStats(typeHit: ShapeType, popUpPos: CGPoint?) {
         
         switch typeHit {
             
         case .side:
             linesDestroyed += 1
-            points += 1
-            popUpPoints(points: 1, fontSize: 35, position: popUpPos!)
+            popUpText(txt: "!", fontSize: 35, position: popUpPos!)
             break
         case .easy:
             shapesDestroyed += 1
-            points += 10
-            popUpPoints(points: 10, fontSize: 65, position: CGPoint(x: 0, y: 300))
+            popUpText(txt: "BOOM", fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
         case .medium:
             shapesDestroyed += 1
-            points += 20
-            popUpPoints(points: 20, fontSize: 65, position: CGPoint(x: 0, y: 300))
+            popUpText(txt: "BAM", fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
         case .hard:
             shapesDestroyed += 1
-            points += 50
-            popUpPoints(points: 50, fontSize: 65, position: CGPoint(x: 0, y: 300))
+            popUpText(txt: "KAPLOW", fontSize: 65, position: CGPoint(x: 0, y: 300))
             break
         }
-        pointstxt.text = "\(points)"
     }
     
-    func popUpPoints(points: Int, fontSize: CGFloat, position: CGPoint) {
+    func popUpText(txt: String, fontSize: CGFloat, position: CGPoint) {
         
         lazy var popUpText: SKLabelNode = {
-            let popUpText = SKLabelNode(fontNamed: "HelveticaNeue-Light")
+            let popUpText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             popUpText.fontSize = fontSize
             popUpText.zPosition = 1
             popUpText.fontColor = SKColor.white
             popUpText.horizontalAlignmentMode = .center
             popUpText.verticalAlignmentMode = .baseline
-            popUpText.text = "+\(points)"
+            popUpText.text = "\(txt)"
             popUpText.position = position
             return popUpText
         }()
@@ -474,7 +480,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         spinSpeed -= 0.15
         
-        increasePoints(typeHit: currentShapeType, popUpPos: nil)
+        informStats(typeHit: currentShapeType, popUpPos: nil)
         
         beginRound()
     }
@@ -482,7 +488,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     func roundPopUp() {
         
         lazy var popUpText: SKLabelNode = {
-            let popUpText = SKLabelNode(fontNamed: "HelveticaNeue-Thin")
+            let popUpText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             popUpText.fontSize = 100
             popUpText.zPosition = 1
             popUpText.fontColor = SKColor.white
@@ -534,7 +540,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 let haptic = UIImpactFeedbackGenerator(style: .soft)
                 haptic.impactOccurred()
                 
-                increasePoints(typeHit: .side, popUpPos: ball.position)
+                informStats(typeHit: .side, popUpPos: ball.position)
                 
                 //camera shake
                 let shake = SKAction.shake(initialPosition: masterNode.position, duration: 0.1, amplitudeX: 0, amplitudeY: 100)
