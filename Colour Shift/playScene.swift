@@ -32,8 +32,9 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var totalTargets = 0
     var layers = 1
     var maxLayers = 3
-    var round = 0
+    var round = 17
     var set = 0
+    var popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
     var masterNode = SKNode()
     
     //for stats
@@ -65,11 +66,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         var nightMode = false
         if UserDefaults.standard.object(forKey: "nightMode") != nil {
             nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
-        }
-        if nightMode {
-            self.backgroundColor = UIColor.black
-        } else {
-            self.backgroundColor = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
         }
         createGrounds(fgName: fgNames[0], bgName: bgNames[0], gSpawn: CGPoint(x: 0, y: 0))
         addChild(masterNode)
@@ -250,6 +246,14 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         round += 1
         targetLines = []
         
+        if round > 5 && round <= 10 {
+            popupTextColor = #colorLiteral(red: 0.7921568627, green: 0.4039215686, blue: 0.007843137255, alpha: 1)
+        } else if round > 10 && round < 15 {
+            popupTextColor = #colorLiteral(red: 0.03921568627, green: 0.5764705882, blue: 0.5882352941, alpha: 1)
+        } else {
+            popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
+        }
+        
         roundPopUp()
         
         //a set resets every 5 levels and it's value otehrwise increases by one each round
@@ -352,7 +356,14 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         ballsFired += 1
         
-        let texture = SKTexture(imageNamed: "colourClimbBall")
+        var texture = SKTexture(imageNamed: "colourClimbBall")
+        
+        if round > 5 && round <= 10 {
+            texture = SKTexture(imageNamed: "colourClimbBallDelightfulOrange")
+        } else if round > 10 && round < 15 {
+            texture = SKTexture(imageNamed: "colourClimbBallCoolGreen")
+        }
+        
         let hitBoxTexture = SKTexture(imageNamed: "circle")
         let ball = SKSpriteNode(texture: texture)
         ball.size = CGSize(width: 40, height: 40)
@@ -425,7 +436,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             
         case .side:
             linesDestroyed += 1
-            popUpText(txt: "!", fontSize: 35, position: popUpPos!)
+            popUpText(txt: ".", fontSize: 35, position: popUpPos!)
             break
         case .easy:
             shapesDestroyed += 1
@@ -453,6 +464,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             popUpText.verticalAlignmentMode = .baseline
             popUpText.text = "\(txt)"
             popUpText.position = position
+            popUpText.fontColor = popupTextColor
             return popUpText
         }()
         
@@ -491,7 +503,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             let popUpText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             popUpText.fontSize = 100
             popUpText.zPosition = 1
-            popUpText.fontColor = SKColor.white
+            popUpText.fontColor = popupTextColor
             popUpText.horizontalAlignmentMode = .center
             popUpText.verticalAlignmentMode = .baseline
             popUpText.text = "Round \(round)"
