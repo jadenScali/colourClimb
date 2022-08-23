@@ -59,7 +59,7 @@ class mainMenuVC: UIViewController {
             }
         } else {
             musicButtonOn = true
-            musicOnOffTxt.text = "ON"
+            musicOnOffTxt.text = "OFF"
         }
     }
     
@@ -95,28 +95,41 @@ class mainMenuVC: UIViewController {
         return true
     }
     
+    @IBAction func optionsArrowButton(_ sender: Any) {
+        
+        let haptic = UIImpactFeedbackGenerator(style: .light)
+        haptic.impactOccurred()
+    }
+    
+    @IBAction func playButtonPress(_ sender: Any) {
+        let haptic = UIImpactFeedbackGenerator(style: .soft)
+        haptic.impactOccurred()
+    }
+    
     @IBAction func musicOffOnTap(_ sender: Any) {
+        
+        let haptic = UIImpactFeedbackGenerator(style: .soft)
+        haptic.impactOccurred()
         
         if musicButtonOn {
             UserDefaults.standard.set(true, forKey: "musicIsPlaying")
             playStopMusic()
             musicOnOffTxt.text = "ON"
-            let haptic = UIImpactFeedbackGenerator(style: .soft)
-            haptic.impactOccurred()
             
             musicButtonOn = false
         } else {
             UserDefaults.standard.set(false, forKey: "musicIsPlaying")
             playStopMusic()
             musicOnOffTxt.text = "OFF"
-            let haptic = UIImpactFeedbackGenerator(style: .soft)
-            haptic.impactOccurred()
             
             musicButtonOn = true
         }
     }
     
     @IBAction func tutorialOffOnTap(_ sender: Any) {
+        
+        let haptic = UIImpactFeedbackGenerator(style: .soft)
+        haptic.impactOccurred()
         
         if tutorialButtonOn {
             UserDefaults.standard.set(true, forKey: "wantsTutorial")
@@ -140,8 +153,10 @@ class mainMenuVC: UIViewController {
         }
         
         if wantsTutorial {
+            tutorialButtonOn = false
             tutorialOnOffTxt.text = "ON"
         } else {
+            tutorialButtonOn = true
             tutorialOnOffTxt.text = "OFF"
         }
     }

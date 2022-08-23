@@ -95,6 +95,7 @@
                                                     <constraint firstItem="f9o-xh-Tgx" firstAttribute="height" secondItem="2q5-pz-Cx1" secondAttribute="height" id="Pjq-m7-LgL"/>
                                                     <constraint firstItem="akS-kV-b9B" firstAttribute="bottom" secondItem="PoS-FQ-pXO" secondAttribute="bottom" id="UjR-jV-DFq"/>
                                                     <constraint firstItem="PoS-FQ-pXO" firstAttribute="top" secondItem="2q5-pz-Cx1" secondAttribute="top" id="VSZ-vu-yXS"/>
+                                                    <constraint firstItem="PoS-FQ-pXO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f9o-xh-Tgx" secondAttribute="trailing" constant="5" id="Y6X-aU-aEu"/>
                                                     <constraint firstItem="akS-kV-b9B" firstAttribute="trailing" secondItem="PoS-FQ-pXO" secondAttribute="trailing" id="nlv-PX-QQ8"/>
                                                     <constraint firstItem="f9o-xh-Tgx" firstAttribute="leading" secondItem="2q5-pz-Cx1" secondAttribute="leading" id="vNA-iP-mcU"/>
                                                 </constraints>
@@ -135,6 +136,7 @@
                                                     <constraint firstItem="ITg-t8-et3" firstAttribute="top" secondItem="MQ5-Co-gQ4" secondAttribute="top" id="IzO-xu-QaK"/>
                                                     <constraint firstItem="3No-uG-002" firstAttribute="leading" secondItem="ITg-t8-et3" secondAttribute="leading" id="OFh-uD-CRq"/>
                                                     <constraint firstItem="Xle-w8-9CP" firstAttribute="height" secondItem="MQ5-Co-gQ4" secondAttribute="height" id="SpL-Yq-iaE"/>
+                                                    <constraint firstItem="ITg-t8-et3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xle-w8-9CP" secondAttribute="trailing" constant="5" id="Yn9-w1-hNM"/>
                                                     <constraint firstItem="3No-uG-002" firstAttribute="bottom" secondItem="ITg-t8-et3" secondAttribute="bottom" id="pCO-yL-nz1"/>
                                                     <constraint firstAttribute="height" constant="64" id="vJd-Ra-G51"/>
                                                     <constraint firstItem="3No-uG-002" firstAttribute="trailing" secondItem="ITg-t8-et3" secondAttribute="trailing" id="zAm-RA-3t5"/>
@@ -157,6 +159,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
+                                                            <action selector="optionsArrowButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Vgb-Ie-I2I"/>
                                                             <segue destination="Pik-UZ-BFf" kind="show" id="aPw-OW-fm4"/>
                                                         </connections>
                                                     </button>
@@ -197,6 +200,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
+                                            <action selector="playButtonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="X3Q-ch-oOq"/>
                                             <segue destination="iA4-wZ-zkS" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="rm3-bf-BX9"/>
                                         </connections>
                                     </button>
@@ -309,6 +313,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
+                                            <action selector="statsArrowButton:" destination="Pik-UZ-BFf" eventType="touchUpInside" id="ugU-3p-HXc"/>
                                             <segue destination="RFp-vj-UnG" kind="show" id="q9i-Hr-Utv"/>
                                         </connections>
                                     </button>
@@ -346,6 +351,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
+                                            <action selector="feedbackArrowButton:" destination="Pik-UZ-BFf" eventType="touchUpInside" id="QD9-e4-fdN"/>
                                             <segue destination="IBR-TJ-WuQ" kind="show" id="pnK-GY-1Z3"/>
                                         </connections>
                                     </button>
@@ -699,6 +705,8 @@
                     </view>
                     <navigationItem key="navigationItem" title=" " id="tmR-Ym-ak8"/>
                     <connections>
+                        <outlet property="contactButtonBacking" destination="gIs-Yx-zvU" id="aim-U8-psx"/>
+                        <outlet property="contactButtonTxt" destination="jed-vd-Gud" id="MzZ-b0-BiK"/>
                         <outlet property="contactUsButton" destination="5uC-DX-BFf" id="OVS-5f-eGN"/>
                         <outlet property="feedBackBodyTxt" destination="dDR-5Q-0YX" id="gJK-fh-k98"/>
                     </connections>

@@ -19,6 +19,18 @@ class optionsVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    @IBAction func statsArrowButton(_ sender: Any) {
+        
+        let haptic = UIImpactFeedbackGenerator(style: .light)
+        haptic.impactOccurred()
+    }
+    
+    @IBAction func feedbackArrowButton(_ sender: Any) {
+        
+        let haptic = UIImpactFeedbackGenerator(style: .light)
+        haptic.impactOccurred()
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }

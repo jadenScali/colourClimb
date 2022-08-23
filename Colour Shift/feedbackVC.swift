@@ -13,6 +13,9 @@ class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavig
     @IBOutlet weak var contactUsButton: UIButton!
     @IBOutlet weak var feedBackBodyTxt: UILabel!
     
+    @IBOutlet weak var contactButtonTxt: UILabel!
+    @IBOutlet weak var contactButtonBacking: UIImageView!
+    
     var didSendFeedback = false
     
     override func viewDidLoad() {
@@ -24,6 +27,9 @@ class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavig
         if didSendFeedback {
             feedBackBodyTxt.text = "Thank you for your feedback!"
             contactUsButton.isHidden = true
+            
+            contactButtonTxt.text = " "
+            contactButtonBacking.isHidden = true
         }
     }
     
@@ -40,6 +46,9 @@ class feedbackVC: UIViewController, MFMailComposeViewControllerDelegate, UINavig
     }
     
     @IBAction func contactUsButtonPress(_ sender: Any) {
+        
+        let haptic = UIImpactFeedbackGenerator(style: .soft)
+        haptic.impactOccurred()
         
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = self
