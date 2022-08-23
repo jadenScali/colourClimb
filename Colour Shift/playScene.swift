@@ -18,11 +18,13 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var fgNames = ["forestFg", "highTreesFg", "highTreesFg", "highTreesFg", "treeTopsFg",
                    "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyTransFg",
                    "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyTransFg",
-                   "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyTransFg"]
+                   "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyTransFg",
+                   "mSpaceFg", "mSpaceFg", "mSpaceFg", "mSpaceFg", "vMoonFg"]
     var bgNames = ["forestBg", "forestBg", "forestBg", "forestBg", "forestBg",
                    "blueSkyBg", "blueSkyBg", "blueSkyBg", "blueSkyBg", "blueSkyTransBg",
                    "yellowSkyBg", "yellowSkyBg", "yellowSkyBg", "yellowSkyBg", "yellowSkyTransBg",
-                   "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyTransBg"]
+                   "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyTransBg",
+                   "spaceBg", "spaceBg", "spaceBg", "spaceBg", "vMoonBg"]
     var groundGroups: [SKNode] = []
     
     //lower spinSpeed means it'll spin faster
@@ -32,7 +34,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var totalTargets = 0
     var layers = 1
     var maxLayers = 3
-    var round = 0
+    var round = 23
     var set = 0
     var popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
     var masterNode = SKNode()
@@ -109,6 +111,18 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 
                 grounds.addChild(mfg)
             }
+        } else if fgName.first == "v" {
+            for i in 0...1 {
+                let vfg = SKSpriteNode(imageNamed: fgName)
+                vfg.name = "vfg"
+                vfg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
+                vfg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                vfg.position = CGPoint(x: gSpawn.x, y: (CGFloat(i) * self.scene!.size.height) + gSpawn.y)
+                vfg.zPosition = -99
+                
+                grounds.addChild(vfg)
+                print(vfg.position)
+            }
         } else {
             let fg = SKSpriteNode(imageNamed: fgName)
             fg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
@@ -119,18 +133,34 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             grounds.addChild(fg)
         }
         
-        for i in 0...1 {
-            let bg = SKSpriteNode(imageNamed: bgName)
-            bg.name = "bg"
-            bg.size.height = (self.scene?.size.height)!
-            bg.size.width = (self.scene?.size.height)! * 1.686656671664168
-            bg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            bg.position = CGPoint(x: CGFloat(i) * bg.size.width, y: gSpawn.y)
-            bg.zPosition = -100
-            
-            bgWidth = bg.size.width
-            
-            grounds.addChild(bg)
+        if bgName.first == "v" {
+            for i in 0...1 {
+                let bg = SKSpriteNode(imageNamed: bgName)
+                bg.name = "vbg"
+                bg.size.height = (self.scene?.size.height)!
+                bg.size.width = (self.scene?.size.height)! * 1.686656671664168
+                bg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                bg.position = CGPoint(x: gSpawn.x, y: (CGFloat(i) * self.scene!.size.height) + gSpawn.y)
+                bg.zPosition = -100
+                
+                bgWidth = bg.size.width
+                
+                grounds.addChild(bg)
+            }
+        } else {
+            for i in 0...1 {
+                let bg = SKSpriteNode(imageNamed: bgName)
+                bg.name = "bg"
+                bg.size.height = (self.scene?.size.height)!
+                bg.size.width = (self.scene?.size.height)! * 1.686656671664168
+                bg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                bg.position = CGPoint(x: CGFloat(i) * bg.size.width, y: gSpawn.y)
+                bg.zPosition = -100
+                
+                bgWidth = bg.size.width
+                
+                grounds.addChild(bg)
+            }
         }
     }
     
@@ -146,12 +176,30 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 }
             }))
             
+            grounds.enumerateChildNodes(withName: "vbg", using: ({
+                (node, error) in
+                node.position.y -= 8
+                
+                if node.position.y < 0 {
+                    node.position.y += (self.scene?.size.height)! * 2
+                }
+            }))
+            
             grounds.enumerateChildNodes(withName: "mfg", using: ({
                 (node, error) in
                 node.position.x -= 1
                 
                 if node.position.x < -(self.scene?.size.width)! {
                     node.position.x += (self.scene?.size.width)! * 2
+                }
+            }))
+            
+            grounds.enumerateChildNodes(withName: "vfg", using: ({
+                (node, error) in
+                node.position.y -= 16
+                
+                if node.position.y < 0 {
+                    node.position.y += (self.scene?.size.height)! * 2
                 }
             }))
         }
@@ -332,15 +380,15 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             }
             
             shape.run(.sequence([
-                SKAction.scale(by: 0.01, duration: 0),
+                SKAction.scale(by: 0.02, duration: 0),
                 SKAction.wait(forDuration: 1),
-                SKAction.scale(by: 100, duration: 1)
+                SKAction.scale(by: 50, duration: 1)
             ]))
         } else {
             shape.isHidden = false
             shape.run(.sequence([
-                SKAction.scale(by: 0.01, duration: 0),
-                SKAction.scale(by: 100, duration: 1)
+                SKAction.scale(by: 0.02, duration: 0),
+                SKAction.scale(by: 50, duration: 1)
             ]))
         }
         
