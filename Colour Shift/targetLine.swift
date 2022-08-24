@@ -11,12 +11,15 @@ class targetLine: SKNode {
     
     var layers = 0
     var isRed = false
-    var colors = [UIColor.red,
-                  UIColor.cyan,
-                  UIColor.green,
-                  UIColor.magenta]
-    var currentColor = UIColor.white
-    var line = SKSpriteNode(color: .white, size: CGSize(width: 1, height: 1))
+    var lineTextures: [SKTexture] = [
+        SKTexture(imageNamed: "shapeLineDarkestRed"),
+        SKTexture(imageNamed: "shapeLineCoolGreen"),
+        SKTexture(imageNamed: "shapeLineDelOrange"),
+        SKTexture(imageNamed: "shapeLineOffWhite")
+    ]
+    var currentTexture = SKTexture(imageNamed: "shapeLineDarkestRed")
+    var line = SKSpriteNode(color: .clear, size: CGSize(width: 1, height: 1))
+    var lineImg = SKSpriteNode(texture: SKTexture(imageNamed: "shapeLineDarkestRed"))
     
     init(numOfLayers: Int, startPoint: CGPoint, endPoint: CGPoint) {
         
@@ -24,15 +27,14 @@ class targetLine: SKNode {
         
         super.init()
         
-        if layers < colors.count {
-            currentColor = colors[layers]
+        if layers < lineTextures.count {
+            currentTexture = lineTextures[layers]
         }
         
-        line.color = currentColor
         line.anchorPoint = CGPoint(x: 0, y: 0)
         line.name = "target"
         line.position = startPoint
-        line.setScale(2)
+        line.setScale(4)
         
         //draws line
         let dx = endPoint.x - line.position.x
@@ -61,18 +63,34 @@ class targetLine: SKNode {
         targetLines += [self]
         
         self.addChild(line)
+        
+        currentTexture = lineTextures[layers]
+        currentTexture.filteringMode = .nearest
+        lineImg.run(SKAction.setTexture(currentTexture))
+        lineImg.anchorPoint = CGPoint(x: 0, y: 1)
+        lineImg.position = line.position
+        lineImg.size.width = line.size.width
+        lineImg.size.height = line.size.height * 10
+        lineImg.zRotation = deg2rad(55 * (lineImg.size.height / lineImg.size.width)) + angle
+        
+        addChild(lineImg)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func deg2rad(_ number: Double) -> Double {
+        return number * .pi / 180
+    }
+    
     func changeColor() {
         
         layers -= 1
         if layers >= 0 {
-            currentColor = colors[layers]
-            line.color = currentColor
+            currentTexture = lineTextures[layers]
+            currentTexture.filteringMode = .nearest
+            lineImg.run(SKAction.setTexture(currentTexture))
         }
         if layers == 0 {
             isRed = true
@@ -83,9 +101,8 @@ class targetLine: SKNode {
         
         //break animation
         line.physicsBody = nil
-        line.run(.sequence([
-            SKAction.move(to: CGPoint(x: line.position.x * 20, y: line.position.y * 20), duration: 2),
-            SKAction.removeFromParent()
+        lineImg.run(.sequence([
+            SKAction.move(to: CGPoint(x: line.position.x * 15, y: line.position.y * 15), duration: 2)
         ]))
         
         parent!.run(.sequence([

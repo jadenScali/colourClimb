@@ -33,8 +33,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var sizeMultipler = 3
     var totalTargets = 0
     var layers = 1
-    var maxLayers = 3
-    var round = 23
+    var round = 0
     var set = 0
     var popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
     var masterNode = SKNode()
@@ -102,7 +101,11 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         if fgName.first == "m" {
             for i in 0...1 {
-                let mfg = SKSpriteNode(imageNamed: fgName)
+                
+                let texture = SKTexture(imageNamed: fgName)
+                texture.filteringMode = .nearest
+                
+                let mfg = SKSpriteNode(texture: texture)
                 mfg.name = "mfg"
                 mfg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
                 mfg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -113,7 +116,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             }
         } else if fgName.first == "v" {
             for i in 0...1 {
-                let vfg = SKSpriteNode(imageNamed: fgName)
+                let texture = SKTexture(imageNamed: fgName)
+                texture.filteringMode = .nearest
+                
+                let vfg = SKSpriteNode(texture: texture)
                 vfg.name = "vfg"
                 vfg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
                 vfg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -121,10 +127,12 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 vfg.zPosition = -99
                 
                 grounds.addChild(vfg)
-                print(vfg.position)
             }
         } else {
-            let fg = SKSpriteNode(imageNamed: fgName)
+            let texture = SKTexture(imageNamed: fgName)
+            texture.filteringMode = .nearest
+            
+            let fg = SKSpriteNode(texture: texture)
             fg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
             fg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             fg.position = gSpawn
@@ -135,7 +143,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         if bgName.first == "v" {
             for i in 0...1 {
-                let bg = SKSpriteNode(imageNamed: bgName)
+                let texture = SKTexture(imageNamed: bgName)
+                texture.filteringMode = .nearest
+                
+                let bg = SKSpriteNode(texture: texture)
                 bg.name = "vbg"
                 bg.size.height = (self.scene?.size.height)!
                 bg.size.width = (self.scene?.size.height)! * 1.686656671664168
@@ -149,7 +160,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             }
         } else {
             for i in 0...1 {
-                let bg = SKSpriteNode(imageNamed: bgName)
+                let texture = SKTexture(imageNamed: bgName)
+                texture.filteringMode = .nearest
+                
+                let bg = SKSpriteNode(texture: texture)
                 bg.name = "bg"
                 bg.size.height = (self.scene?.size.height)!
                 bg.size.width = (self.scene?.size.height)! * 1.686656671664168
@@ -340,9 +354,12 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        //you want this to happen after shape spawns
-        if Int(round / 5) + 1 <= maxLayers {
-            layers = Int(round / 5) + 1
+        if round < 5 {
+            layers = 1
+        } else if round < 15 {
+            layers = 2
+        } else {
+            layers = 3
         }
     }
     
@@ -406,6 +423,8 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         } else if round > 10 && round < 15 {
             texture = SKTexture(imageNamed: "colourClimbBallCoolGreen")
         }
+        
+        texture.filteringMode = .nearest
         
         let hitBoxTexture = SKTexture(imageNamed: "circle")
         let ball = SKSpriteNode(texture: texture)
