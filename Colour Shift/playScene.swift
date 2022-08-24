@@ -19,12 +19,12 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                    "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyFg", "mBlueSkyTransFg",
                    "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyFg", "mYellowSkyTransFg",
                    "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyFg", "mOrangeSkyTransFg",
-                   "mSpaceFg", "mSpaceFg", "mSpaceFg", "mSpaceFg", "vMoonFg"]
+                   "mSpaceFg", "vMoonFg"]
     var bgNames = ["forestBg", "forestBg", "forestBg", "forestBg", "forestBg",
                    "blueSkyBg", "blueSkyBg", "blueSkyBg", "blueSkyBg", "blueSkyTransBg",
                    "yellowSkyBg", "yellowSkyBg", "yellowSkyBg", "yellowSkyBg", "yellowSkyTransBg",
                    "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyBg", "orangeSkyTransBg",
-                   "spaceBg", "spaceBg", "spaceBg", "spaceBg", "vMoonBg"]
+                   "spaceBg", "vMoonBg"]
     var groundGroups: [SKNode] = []
     
     //lower spinSpeed means it'll spin faster
@@ -278,6 +278,22 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             CGPoint(x: -26 * sizeMultipler, y: -50 * sizeMultipler),
             CGPoint(x: -50 * sizeMultipler, y: -29 * sizeMultipler)
         ]
+        let bannerPoints = [
+            CGPoint(x: 27 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: -27 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: -27 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: 0 * sizeMultipler, y: -25 * sizeMultipler),
+            CGPoint(x: 27 * sizeMultipler, y: -50 * sizeMultipler)
+        ]
+        let irregularHeptagonPoints = [
+            CGPoint(x: 37 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: -29 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: -37 * sizeMultipler, y: 14 * sizeMultipler),
+            CGPoint(x: -50 * sizeMultipler, y: -7 * sizeMultipler),
+            CGPoint(x: -35 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: 35 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: 50 * sizeMultipler, y: -7 * sizeMultipler)
+        ]
         let starPoints = [
             CGPoint(x: 0 * sizeMultipler, y: 50 * sizeMultipler),
             CGPoint(x: 11 * sizeMultipler, y: 15 * sizeMultipler),
@@ -290,9 +306,22 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             CGPoint(x: -48 * sizeMultipler, y: 15 * sizeMultipler),
             CGPoint(x: -11 * sizeMultipler, y: 15 * sizeMultipler)
         ]
+        let clawPoints = [
+            CGPoint(x: 35 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: -35 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: -50 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: -12 * sizeMultipler, y: -20 * sizeMultipler),
+            CGPoint(x: 12 * sizeMultipler, y: -20 * sizeMultipler),
+            CGPoint(x: 50 * sizeMultipler, y: -50 * sizeMultipler)
+        ]
         let easyShapes = [trianglePoints, squarePoints, trapizoidPoints]
-        let mediumShapes = [pentagonPoints, hexagonPoints, ireggularPentagonPoints]
-        let hardShapes = [starPoints]
+        var mediumShapes = [pentagonPoints, hexagonPoints, ireggularPentagonPoints]
+        var hardShapes = [starPoints, clawPoints]
+        
+        if round > 10 {
+            mediumShapes += [bannerPoints]
+            mediumShapes += [irregularHeptagonPoints]
+        }
         
         if round % 5 == 0 {
             set = 1
@@ -306,7 +335,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         if round > 5 && round <= 10 {
             popupTextColor = #colorLiteral(red: 0.7921568627, green: 0.4039215686, blue: 0.007843137255, alpha: 1)
         } else if round > 10 && round < 15 {
-            popupTextColor = #colorLiteral(red: 0.03921568627, green: 0.5764705882, blue: 0.5882352941, alpha: 1)
+            popupTextColor = #colorLiteral(red: 0, green: 0.07100000232, blue: 0.09799999744, alpha: 1)
+        } else if round > 15 {
+            hardShapes.removeFirst()
+            popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
         } else {
             popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
         }
@@ -421,7 +453,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         if round > 5 && round <= 10 {
             texture = SKTexture(imageNamed: "colourClimbBallDelightfulOrange")
         } else if round > 10 && round < 15 {
-            texture = SKTexture(imageNamed: "colourClimbBallCoolGreen")
+            texture = SKTexture(imageNamed: "colourClimbBallOffBlack")
         }
         
         texture.filteringMode = .nearest
@@ -521,7 +553,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             let popUpText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             popUpText.fontSize = fontSize
             popUpText.zPosition = 1
-            popUpText.fontColor = SKColor.white
             popUpText.horizontalAlignmentMode = .center
             popUpText.verticalAlignmentMode = .baseline
             popUpText.text = "\(txt)"
@@ -552,7 +583,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         tansitionGrounds()
         
-        spinSpeed -= 0.15
+        spinSpeed -= 0.1125
         
         informStats(typeHit: currentShapeType, popUpPos: nil)
         

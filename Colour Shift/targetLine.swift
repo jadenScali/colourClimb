@@ -14,7 +14,7 @@ class targetLine: SKNode {
     var lineTextures: [SKTexture] = [
         SKTexture(imageNamed: "shapeLineDarkestRed"),
         SKTexture(imageNamed: "shapeLineCoolGreen"),
-        SKTexture(imageNamed: "shapeLineDelOrange"),
+        SKTexture(imageNamed: "shapeLineOffBlack"),
         SKTexture(imageNamed: "shapeLineOffWhite")
     ]
     var currentTexture = SKTexture(imageNamed: "shapeLineDarkestRed")
