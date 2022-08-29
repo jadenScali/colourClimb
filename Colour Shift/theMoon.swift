@@ -45,6 +45,8 @@ class theMoon: SKSpriteNode {
     
     func spawnAni() {
         
+        NotificationCenter.default.post(name: Notification.Name("stopBgMusic"), object: nil)
+        
         let moveDown = SKAction.move(by: CGVector(dx: 0, dy: -(sceneH) + 600), duration: 1.5)
         moveDown.timingMode = .easeOut
         
@@ -75,6 +77,7 @@ class theMoon: SKSpriteNode {
             moveDownAgain,
             SKAction.wait(forDuration: 0.25)
         ]), completion: {
+            NotificationCenter.default.post(name: Notification.Name("playStopMoonMusic"), object: nil)
             isTransitioning = false
             self.openEye()
         })

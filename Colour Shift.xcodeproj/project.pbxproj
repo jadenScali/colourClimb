@@ -19,13 +19,14 @@
 		798FD2DC2884879B00779196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 798FD2DA2884879B00779196 /* LaunchScreen.storyboard */; };
 		798FD2E3288490B000779196 /* targetLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD2E2288490B000779196 /* targetLine.swift */; };
 		798FD2E528849FD000779196 /* mainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD2E428849FD000779196 /* mainMenuVC.swift */; };
-		79C1FEC82888D3F200656B2B /* colourShiftLofiSoundtrack.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 79C1FEC72888D3F200656B2B /* colourShiftLofiSoundtrack.m4a */; };
 		79C1FECA288A171400656B2B /* optionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1FEC9288A171400656B2B /* optionsVC.swift */; };
 		79C1FECC288ACED800656B2B /* mainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1FECB288ACED800656B2B /* mainNC.swift */; };
 		79C1FECE288ADAE900656B2B /* statsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1FECD288ADAE900656B2B /* statsVC.swift */; };
 		79C1FED0288C5FC200656B2B /* feedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1FECF288C5FC200656B2B /* feedbackVC.swift */; };
 		79C1FED2288C96AD00656B2B /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 79C1FED1288C96AD00656B2B /* TutorialScene.sks */; };
 		79C1FED4288C96FF00656B2B /* tutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C1FED3288C96FF00656B2B /* tutorialScene.swift */; };
+		79EF95A028BC6A5900E16EEC /* colourClimbLofiMoon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 79EF959E28BC6A5900E16EEC /* colourClimbLofiMoon.m4a */; };
+		79EF95A128BC6A5900E16EEC /* colourClimbLofiSoundtrack.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 79EF959F28BC6A5900E16EEC /* colourClimbLofiSoundtrack.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,13 +44,14 @@
 		798FD2DB2884879B00779196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		798FD2E2288490B000779196 /* targetLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = targetLine.swift; sourceTree = "<group>"; };
 		798FD2E428849FD000779196 /* mainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainMenuVC.swift; sourceTree = "<group>"; };
-		79C1FEC72888D3F200656B2B /* colourShiftLofiSoundtrack.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = colourShiftLofiSoundtrack.m4a; sourceTree = "<group>"; };
 		79C1FEC9288A171400656B2B /* optionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionsVC.swift; sourceTree = "<group>"; };
 		79C1FECB288ACED800656B2B /* mainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainNC.swift; sourceTree = "<group>"; };
 		79C1FECD288ADAE900656B2B /* statsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statsVC.swift; sourceTree = "<group>"; };
 		79C1FECF288C5FC200656B2B /* feedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedbackVC.swift; sourceTree = "<group>"; };
 		79C1FED1288C96AD00656B2B /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
 		79C1FED3288C96FF00656B2B /* tutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialScene.swift; sourceTree = "<group>"; };
+		79EF959E28BC6A5900E16EEC /* colourClimbLofiMoon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = colourClimbLofiMoon.m4a; sourceTree = "<group>"; };
+		79EF959F28BC6A5900E16EEC /* colourClimbLofiSoundtrack.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = colourClimbLofiSoundtrack.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				7951DB0C28B3319F003B2F24 /* Colour-Shift-Info.plist */,
+				79EF95A328BC6CB700E16EEC /* Sounds */,
 				7951DB0A28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf */,
-				79C1FEC72888D3F200656B2B /* colourShiftLofiSoundtrack.m4a */,
 				798FD2CB2884879900779196 /* AppDelegate.swift */,
 				79C1FED1288C96AD00656B2B /* TutorialScene.sks */,
 				79C1FED3288C96FF00656B2B /* tutorialScene.swift */,
@@ -104,6 +106,15 @@
 				798FD2DA2884879B00779196 /* LaunchScreen.storyboard */,
 			);
 			path = "Colour Shift";
+			sourceTree = "<group>";
+		};
+		79EF95A328BC6CB700E16EEC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				79EF959E28BC6A5900E16EEC /* colourClimbLofiMoon.m4a */,
+				79EF959F28BC6A5900E16EEC /* colourClimbLofiSoundtrack.m4a */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,11 +175,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79C1FEC82888D3F200656B2B /* colourShiftLofiSoundtrack.m4a in Resources */,
+				79EF95A128BC6A5900E16EEC /* colourClimbLofiSoundtrack.m4a in Resources */,
 				798FD2D72884879900779196 /* Main.storyboard in Resources */,
 				79C1FED2288C96AD00656B2B /* TutorialScene.sks in Resources */,
 				798FD2CE2884879900779196 /* GameScene.sks in Resources */,
 				7951DB0B28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf in Resources */,
+				79EF95A028BC6A5900E16EEC /* colourClimbLofiMoon.m4a in Resources */,
 				798FD2D92884879B00779196 /* Assets.xcassets in Resources */,
 				798FD2DC2884879B00779196 /* LaunchScreen.storyboard in Resources */,
 			);

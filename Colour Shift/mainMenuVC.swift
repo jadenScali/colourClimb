@@ -15,7 +15,24 @@ var shouldFadeInMainView = false
 var currentTutorialPart = 1
 
 var backGroundMusic: AVAudioPlayer? = {
-    guard let url = Bundle.main.url(forResource: "colourShiftLofiSoundtrack", withExtension: "m4a") else {
+    guard let url = Bundle.main.url(forResource: "colourClimbLofiSoundtrack", withExtension: "m4a") else {
+        return nil
+    }
+    do {
+        //makes not effected by ringer
+        try AVAudioSession.sharedInstance().setCategory(.playback)
+        
+        let audioPlayer = try AVAudioPlayer(contentsOf: url)
+        //-1 makes it loop forever
+        audioPlayer.numberOfLoops = -1
+        return audioPlayer
+    } catch {
+        return nil
+    }
+}()
+
+var moonMusic: AVAudioPlayer? = {
+    guard let url = Bundle.main.url(forResource: "colourClimbLofiMoon", withExtension: "m4a") else {
         return nil
     }
     do {
@@ -45,8 +62,13 @@ class mainMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playStopMusic()
+        playStopBgMusic()
+        UserDefaults.standard.set(true, forKey: "moonMusicShouldPlay")
         determineTutorialButton()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playBgMusic), name: Notification.Name("playBgMusic"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopBgMusic), name: Notification.Name("stopBgMusic"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playStopMoonMusic), name: Notification.Name("playStopMoonMusic"), object: nil)
         
         if UserDefaults.standard.object(forKey: "musicIsPlaying") != nil {
             let musicOn = UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool
@@ -113,13 +135,13 @@ class mainMenuVC: UIViewController {
         
         if musicButtonOn {
             UserDefaults.standard.set(true, forKey: "musicIsPlaying")
-            playStopMusic()
+            playStopBgMusic()
             musicOnOffTxt.text = "ON"
             
             musicButtonOn = false
         } else {
             UserDefaults.standard.set(false, forKey: "musicIsPlaying")
-            playStopMusic()
+            playStopBgMusic()
             musicOnOffTxt.text = "OFF"
             
             musicButtonOn = true
@@ -161,7 +183,7 @@ class mainMenuVC: UIViewController {
         }
     }
     
-    @objc func playStopMusic() {
+    @objc func playStopBgMusic() {
         
         var musicPlaying = true;
         
@@ -171,11 +193,43 @@ class mainMenuVC: UIViewController {
         
         if musicPlaying {
             
+            backGroundMusic?.currentTime = 0
             backGroundMusic?.play()
             musicIsPlaying = true
         } else {
             
             backGroundMusic?.stop()
+        }
+    }
+    
+    @objc func playBgMusic() {
+        
+        backGroundMusic?.currentTime = 0
+        backGroundMusic?.play()
+    }
+    
+    @objc func stopBgMusic() {
+        
+        backGroundMusic?.stop()
+    }
+    
+    @objc func playStopMoonMusic() {
+        
+        var moonMusicPlaying = true;
+        
+        if UserDefaults.standard.object(forKey: "moonMusicShouldPlay") != nil {
+            moonMusicPlaying = UserDefaults.standard.object(forKey: "moonMusicShouldPlay") as! Bool
+        }
+        
+        if UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool {
+            if moonMusicPlaying {
+                UserDefaults.standard.set(false, forKey: "moonMusicShouldPlay")
+                moonMusic?.currentTime = 0
+                moonMusic?.play()
+            } else {
+                UserDefaults.standard.set(true, forKey: "moonMusicShouldPlay")
+                moonMusic?.stop()
+            }
         }
     }
 }

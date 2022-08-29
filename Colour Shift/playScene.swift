@@ -33,7 +33,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var sizeMultipler = 3.0
     var totalTargets = 0
     var layers = 1
-    var round = 20
+    var round = 0
     var set = 0
     var popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
     var masterNode = SKNode()
@@ -499,6 +499,14 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         gamesPlayed += 1
         updateStats()
         
+        if UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool && round == 22 {
+            UserDefaults.standard.set(true, forKey: "musicIsPlaying")
+            NotificationCenter.default.post(name: Notification.Name("playBgMusic"), object: nil)
+            
+            UserDefaults.standard.set(false, forKey: "moonMusicShouldPlay")
+            NotificationCenter.default.post(name: Notification.Name("playStopMoonMusic"), object: nil)
+        }
+        
         //tells gameVC to transition to new scene
         NotificationCenter.default.post(name: Notification.Name("loadMainMenu"), object: nil)
     }
@@ -689,6 +697,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(moonBattleSpawnShape), name: Notification.Name("moonBattleSpawnShape"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moonBattleOver), name: Notification.Name("moonBattleOver"), object: nil)
         
+        spinSpeed = 3.5
         round += 1
         targetLines = []
         layers = 3
@@ -742,6 +751,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     @objc func moonBattleSpawnShape() {
         
         if highShape {
+            spinSpeed = 5.0
             spawnShape(type: moonShapes![self.moon!.phase - 1], pos: CGPoint(x: 0, y: 300))
         } else {
             spawnShape(type: moonShapes![self.moon!.phase - 1], pos: CGPoint(x: 0, y: -300))
