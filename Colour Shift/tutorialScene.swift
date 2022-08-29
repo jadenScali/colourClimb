@@ -12,10 +12,10 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
     var masterNode = SKNode()
     
     lazy var tutorialInstructiontxt: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "HelveticaNeue-Thin")
-        label.fontSize = 75
+        var label = SKLabelNode(fontNamed: "Messe Duesseldorf")
+        label.fontSize = 63
         label.zPosition = 1
-        label.color = SKColor.white
+        label.fontColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .baseline
         label.numberOfLines = 0
@@ -23,23 +23,11 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         return label
     }()
     
-    var tapHere = SKSpriteNode()
-    
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
         
-        //checks nightmode and sets background colour
-        var nightMode = false
-        
-        if UserDefaults.standard.object(forKey: "nightMode") != nil {
-            nightMode = UserDefaults.standard.object(forKey: "nightMode") as! Bool
-        }
-        if nightMode {
-            self.backgroundColor = UIColor.black
-        } else {
-            self.backgroundColor = #colorLiteral(red: 0.9843137264, green: 0.9137254953, blue: 0.4980392158, alpha: 1)
-        }
+        self.backgroundColor = #colorLiteral(red: 0.9330000281, green: 0.6079999804, blue: 0, alpha: 1)
         
         addChild(masterNode)
         
@@ -72,11 +60,14 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         //spawns ball
-        let texture = SKTexture(imageNamed: "ball")
+        let texture = SKTexture(imageNamed: "colourClimbBall")
+        texture.filteringMode = .nearest
+        let hitBoxTexture = SKTexture(imageNamed: "circle")
         let ball = SKSpriteNode(texture: texture)
+        ball.size = CGSize(width: 40, height: 40)
         ball.name = "ball"
         ball.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        ball.physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+        ball.physicsBody = SKPhysicsBody(texture: hitBoxTexture, size: hitBoxTexture.size())
         ball.physicsBody?.isDynamic = true
         ball.physicsBody?.allowsRotation = false
         ball.physicsBody?.friction = 0
@@ -107,11 +98,9 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         targetLines = []
         
-        tapHereAni()
-        
         tutorialInstructiontxt.text = "Tap anywhere to\nspawn a ball"
         
-        let sizeMultipler = 3
+        let sizeMultipler = 3.0
         
         let trianglePoints = [
             CGPoint(x: 0 * sizeMultipler, y: 50 * sizeMultipler),
@@ -127,7 +116,7 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         tutorialInstructiontxt.text = "Some shapes will\nspin faster and\nhave more than\none layer"
         
-        let sizeMultipler = 2.5
+        let sizeMultipler = 3.0
         
         let squarePoints = [
             CGPoint(x: 50 * sizeMultipler, y: 50 * sizeMultipler),
@@ -146,16 +135,16 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         //tutorial completed animation
         lazy var popUpText: SKLabelNode = {
-            let popUpText = SKLabelNode(fontNamed: "HelveticaNeue-Light")
-            popUpText.fontSize = 100
-            popUpText.zPosition = 1
-            popUpText.fontColor = SKColor.white
-            popUpText.horizontalAlignmentMode = .center
-            popUpText.verticalAlignmentMode = .baseline
-            popUpText.numberOfLines = 0
-            popUpText.text = "Tutorial\nCompleted"
-            popUpText.position = CGPoint(x: 0, y: -1000)
-            return popUpText
+            let label = SKLabelNode(fontNamed: "Messe Duesseldorf")
+            label.fontSize = 100
+            label.zPosition = 1
+            label.fontColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
+            label.horizontalAlignmentMode = .center
+            label.verticalAlignmentMode = .baseline
+            label.numberOfLines = 0
+            label.text = "Tutorial\nCompleted"
+            label.position = CGPoint(x: 0, y: -1000)
+            return label
         }()
         addChild(popUpText)
         popUpText.run(.sequence([
@@ -177,10 +166,10 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
     func addTutorialBouncyText() {
         
         lazy var tutorialText: SKLabelNode = {
-            let tutorialText = SKLabelNode(fontNamed: "HelveticaNeue-Light")
+            let tutorialText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             tutorialText.fontSize = 100
             tutorialText.zPosition = 1
-            tutorialText.fontColor = SKColor.white
+            tutorialText.fontColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
             tutorialText.horizontalAlignmentMode = .center
             tutorialText.verticalAlignmentMode = .baseline
             tutorialText.text = "Tutorial"
@@ -198,66 +187,32 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         ])))
     }
     
-    func tapHereAni() {
-        
-        tapHere = SKSpriteNode(imageNamed: "tapHere")
-        tapHere.position = CGPoint(x: 130, y: -15)
-        tapHere.alpha = 0
-        addChild(tapHere)
-        
-        tapHere.run(SKAction.repeatForever(.sequence([
-            SKAction.fadeAlpha(to: 1, duration: 1),
-            SKAction.wait(forDuration: 0.1),
-            SKAction.fadeAlpha(to: 0, duration: 1),
-            SKAction.wait(forDuration: 0.1)
-        ])))
-        
-        tapHere.run(SKAction.repeatForever(.sequence([
-            SKAction.scale(by: 0.8, duration: 1),
-            SKAction.wait(forDuration: 0.1),
-            SKAction.scale(by: 1.25, duration: 1),
-            SKAction.wait(forDuration: 0.1)
-        ])))
-    }
-    
     func spawnShape(numLayers: Int, shapePoints sides: [CGPoint], spinSpeed: Double) {
          
-         let shape = SKSpriteNode()
+        let shape = SKSpriteNode()
          
         //spawns a line between every point in the array of CGPoints as a child of shape
-         for i in Range(0...sides.count - 1) {
-             if i < sides.count - 1 {
-                 //let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[i+1])
-                 //shape.addChild(t)
+        for i in Range(0...sides.count - 1) {
+            if i < sides.count - 1 {
+                let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[i+1], shapeHolder: shape)
+                shape.addChild(t)
              } else {
-                 //let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[0])
-                 //shape.addChild(t)
+                 let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[0], shapeHolder: shape)
+                 shape.addChild(t)
              }
-         }
-         shape.position = CGPoint(x: 0, y: 260)
-         shape.isHidden = true
-         masterNode.addChild(shape)
+        }
+        shape.position = CGPoint(x: 0, y: 200)
+        shape.isHidden = true
+        masterNode.addChild(shape)
          
         //shape spawning animation
-         if currentTutorialPart > 1 {
-             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                 shape.isHidden = false
-             }
-             
-             shape.run(.sequence([
-                 SKAction.scale(by: 0.05, duration: 0),
-                 SKAction.wait(forDuration: 1),
-                 SKAction.scale(by: 20, duration: 1)
-             ]))
-         } else {
-             shape.isHidden = false
-             shape.run(.sequence([
-                 SKAction.scale(by: 0.05, duration: 0),
-                 SKAction.scale(by: 20, duration: 1)
-             ]))
-         }
+        shape.isHidden = false
+        shape.run(.sequence([
+            SKAction.scale(by: 0.02, duration: 0),
+            SKAction.scale(by: 50, duration: 1)
+        ]))
         
-         shape.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi * 2.0, duration: TimeInterval(spinSpeed))))
+        shape.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi * 2.0, duration: TimeInterval(spinSpeed))))
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -277,7 +232,6 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         
         if currentTutorialPart == 1 {
             tutorialInstructiontxt.text = "If a ball hits a red\nline you loose, try\nto make all the\nsides red"
-            tapHere.removeFromParent()
         }
         
         if object.name == "target" {

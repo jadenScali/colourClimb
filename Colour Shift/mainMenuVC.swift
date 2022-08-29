@@ -90,6 +90,8 @@ class mainMenuVC: UIViewController {
         currentTutorialPart = 1
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
+        determineTutorialButton()
+        
         //if coming from gameVC completes animation
         if shouldFadeInMainView {
             shouldFadeInMainView = false

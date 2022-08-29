@@ -58,10 +58,6 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         
-        view.showsFPS = true
-        view.showsNodeCount = true
-        //view.showsPhysics = true
-        
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         isTransitioning = false

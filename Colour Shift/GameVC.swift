@@ -33,12 +33,12 @@ class GameVC: UIViewController {
                 sceneName = "GameScene"
             }
             
-            // Load the SKScene from 'GameScene.sks'
+            //load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: sceneName) {
-                // Set the scale mode to scale to fit the window
+                //set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
-                // Present the scene
+                //present the scene
                 view.presentScene(scene)
             }
             
