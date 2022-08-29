@@ -371,6 +371,7 @@ class theMoon: SKSpriteNode {
                 SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1),
                 SKAction.wait(forDuration: 1)
             ]), completion: {
+                UserDefaults.standard.set(true, forKey: "slayedMoon")
                 NotificationCenter.default.post(name: Notification.Name("moonBattleOver"), object: nil)
             })
         })

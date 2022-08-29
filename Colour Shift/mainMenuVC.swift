@@ -80,8 +80,8 @@ class mainMenuVC: UIViewController {
                 musicOnOffTxt.text = "OFF"
             }
         } else {
-            musicButtonOn = true
-            musicOnOffTxt.text = "OFF"
+            musicButtonOn = false
+            musicOnOffTxt.text = "ON"
         }
     }
     

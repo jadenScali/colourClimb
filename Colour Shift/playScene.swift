@@ -499,7 +499,13 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         gamesPlayed += 1
         updateStats()
         
-        if UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool && round == 22 {
+        var isMusicPlaying = true
+        
+        if UserDefaults.standard.object(forKey: "musicIsPlaying") != nil {
+            isMusicPlaying = UserDefaults.standard.object(forKey: "musicIsPlaying") as! Bool
+        }
+        
+        if isMusicPlaying && round == 22 {
             UserDefaults.standard.set(true, forKey: "musicIsPlaying")
             NotificationCenter.default.post(name: Notification.Name("playBgMusic"), object: nil)
             
@@ -684,6 +690,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 if gotAllTargets && round != 22 {
                     newRound()
                 } else if gotAllTargets {
+                    informStats(typeHit: .hard, popUpPos: nil)
                     moon?.changePhase()
                 }
             }

@@ -429,7 +429,7 @@
                                 <rect key="frame" x="0.0" y="153" width="414" height="709"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYP-1S-wJ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="565"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-ak-mly" userLabel="hiRoundRow">
                                                 <rect key="frame" x="20" y="0.0" width="374" height="107"/>
@@ -458,8 +458,35 @@
                                                     <constraint firstItem="1Xa-3D-nmE" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="top" id="bcC-MI-1Eh"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02t-lU-h1a" userLabel="gamesPlayedRow">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AbA-eV-doy" userLabel="moonSlayerRow">
                                                 <rect key="frame" x="20" y="112" width="374" height="107"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slayed The Moon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bww-QT-feD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="QRH-ia-xhV">
+                                                        <rect key="frame" x="0.0" y="53.5" width="374" height="53.5"/>
+                                                        <fontDescription key="fontDescription" name="Messe-Duesseldorf" family="Messe Duesseldorf" pointSize="40"/>
+                                                        <color key="textColor" name="offWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="QRH-ia-xhV" secondAttribute="trailing" id="0mP-40-FWv"/>
+                                                    <constraint firstItem="QRH-ia-xhV" firstAttribute="leading" secondItem="AbA-eV-doy" secondAttribute="leading" id="5Vy-bF-tIX"/>
+                                                    <constraint firstItem="Bww-QT-feD" firstAttribute="top" secondItem="AbA-eV-doy" secondAttribute="top" id="8Ce-kH-ALW"/>
+                                                    <constraint firstItem="Bww-QT-feD" firstAttribute="leading" secondItem="AbA-eV-doy" secondAttribute="leading" id="Ggo-dm-1ON"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Bww-QT-feD" secondAttribute="trailing" id="baG-MI-frb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="QRH-ia-xhV" secondAttribute="bottom" id="lYk-cr-L2a"/>
+                                                    <constraint firstItem="QRH-ia-xhV" firstAttribute="top" secondItem="Bww-QT-feD" secondAttribute="bottom" id="zZz-0x-bkN"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02t-lU-h1a" userLabel="gamesPlayedRow">
+                                                <rect key="frame" x="20" y="224" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games Played" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-JG-no4">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
@@ -486,7 +513,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDZ-Ie-apK" userLabel="shapesDestroyedRow">
-                                                <rect key="frame" x="20" y="224" width="374" height="107"/>
+                                                <rect key="frame" x="20" y="336" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shapes Destoryed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ln1-JC-b8R">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
@@ -513,7 +540,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzd-37-ZLh" userLabel="linesDestroyedRow">
-                                                <rect key="frame" x="20" y="336" width="374" height="107"/>
+                                                <rect key="frame" x="20" y="448" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lines Hit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-cD-VRB">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
@@ -540,7 +567,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmz-3Q-Fk0" userLabel="ballsFiredRow">
-                                                <rect key="frame" x="20" y="448" width="374" height="107"/>
+                                                <rect key="frame" x="20" y="560" width="374" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balls Fired" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="fJu-Xe-Daw">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
@@ -574,16 +601,19 @@
                                             <constraint firstAttribute="trailing" secondItem="Wzd-37-ZLh" secondAttribute="trailing" constant="20" id="BOS-Hg-hOR"/>
                                             <constraint firstItem="jDZ-Ie-apK" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="BlK-yR-MQn"/>
                                             <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="IIZ-HJ-VYX"/>
+                                            <constraint firstAttribute="trailing" secondItem="AbA-eV-doy" secondAttribute="trailing" constant="20" id="IdW-p2-plp"/>
                                             <constraint firstAttribute="trailing" secondItem="hrx-ak-mly" secondAttribute="trailing" constant="20" id="KEH-x8-dQu"/>
                                             <constraint firstItem="jDZ-Ie-apK" firstAttribute="top" secondItem="02t-lU-h1a" secondAttribute="bottom" constant="5" id="KLN-9F-isa"/>
-                                            <constraint firstItem="02t-lU-h1a" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="bottom" constant="5" id="O6I-mU-gVj"/>
                                             <constraint firstAttribute="trailing" secondItem="02t-lU-h1a" secondAttribute="trailing" constant="20" id="Owm-pI-AP5"/>
                                             <constraint firstAttribute="trailing" secondItem="Fmz-3Q-Fk0" secondAttribute="trailing" constant="20" id="Oym-Hf-hbj"/>
                                             <constraint firstAttribute="bottom" secondItem="Fmz-3Q-Fk0" secondAttribute="bottom" constant="10" id="WAj-Vx-1Do"/>
                                             <constraint firstItem="Fmz-3Q-Fk0" firstAttribute="top" secondItem="Wzd-37-ZLh" secondAttribute="bottom" constant="5" id="Wiv-3K-0l4"/>
+                                            <constraint firstItem="AbA-eV-doy" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="XRB-F5-wYy"/>
+                                            <constraint firstItem="02t-lU-h1a" firstAttribute="top" secondItem="AbA-eV-doy" secondAttribute="bottom" constant="5" id="YbX-Mc-sUn"/>
                                             <constraint firstItem="Wzd-37-ZLh" firstAttribute="top" secondItem="jDZ-Ie-apK" secondAttribute="bottom" constant="5" id="gW4-P7-RK8"/>
                                             <constraint firstItem="hrx-ak-mly" firstAttribute="leading" secondItem="gYP-1S-wJ9" secondAttribute="leading" constant="20" id="iOU-Sf-n1B"/>
                                             <constraint firstItem="hrx-ak-mly" firstAttribute="top" secondItem="gYP-1S-wJ9" secondAttribute="top" id="ogG-o8-WAa"/>
+                                            <constraint firstItem="AbA-eV-doy" firstAttribute="top" secondItem="hrx-ak-mly" secondAttribute="bottom" constant="5" id="wXp-WL-Ztm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -617,6 +647,7 @@
                         <outlet property="gamesPlayedtxt" destination="5fg-pR-oZo" id="RIw-35-NBL"/>
                         <outlet property="hiRoundtxt" destination="jl5-nm-IwG" id="LCP-gm-ZfI"/>
                         <outlet property="linesDestroyedtxt" destination="dFs-In-bbs" id="RM1-nZ-EYO"/>
+                        <outlet property="moonSlayertxt" destination="QRH-ia-xhV" id="pQ2-RT-XBa"/>
                         <outlet property="shapesDestroyedtxt" destination="oU7-9i-uOT" id="Fgx-GL-9RM"/>
                     </connections>
                 </viewController>
@@ -721,10 +752,10 @@
         <image name="buttonBacking" width="256" height="64"/>
         <image name="nextArrow" width="64" height="64"/>
         <namedColor name="happyOrange">
-            <color red="0.93333333333333335" green="0.60784313725490191" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93300002813339233" green="0.60799998044967651" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="offWhite">
-            <color red="0.9137254901960784" green="0.84705882352941175" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.91399997472763062" green="0.84700000286102295" blue="0.65100002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

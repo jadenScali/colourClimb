@@ -10,12 +10,14 @@ import UIKit
 class statsVC: UIViewController {
     
     @IBOutlet weak var hiRoundtxt: UILabel!
+    @IBOutlet weak var moonSlayertxt: UILabel!
     @IBOutlet weak var gamesPlayedtxt: UILabel!
     @IBOutlet weak var shapesDestroyedtxt: UILabel!
     @IBOutlet weak var linesDestroyedtxt: UILabel!
     @IBOutlet weak var ballsFiredtxt: UILabel!
     
     var hiRound = 0
+    var slayedMoon = false
     var gamesPlayed = 0
     var shapesDestroyed = 0
     var linesDestroyed = 0
@@ -45,6 +47,9 @@ class statsVC: UIViewController {
         if UserDefaults.standard.object(forKey: "hiRound") != nil {
             hiRound = UserDefaults.standard.object(forKey: "hiRound") as! Int
         }
+        if UserDefaults.standard.object(forKey: "slayedMoon") != nil {
+            slayedMoon = UserDefaults.standard.object(forKey: "slayedMoon") as! Bool
+        }
         if UserDefaults.standard.object(forKey: "gamesPlayed") != nil {
             gamesPlayed = UserDefaults.standard.object(forKey: "gamesPlayed") as! Int
         }
@@ -62,8 +67,17 @@ class statsVC: UIViewController {
     func setTextToStats() {
         
         loadStats()
+        if hiRound == 22 {
+            hiRoundtxt.text = "The Moon (\(hiRound))"
+        } else {
+            hiRoundtxt.text = "\(hiRound)"
+        }
+        if slayedMoon {
+            moonSlayertxt.text = "Yes"
+        } else {
+            moonSlayertxt.text = "No"
+        }
         
-        hiRoundtxt.text = "\(hiRound)"
         gamesPlayedtxt.text = "\(gamesPlayed)"
         shapesDestroyedtxt.text = "\(shapesDestroyed)"
         linesDestroyedtxt.text = "\(linesDestroyed)"
