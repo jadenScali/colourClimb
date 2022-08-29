@@ -1,6 +1,6 @@
 //
 //  statsVC.swift
-//  Colour Shift
+//  Colour Climb
 //
 //  Created by Jaden Scali on 2022-07-22.
 //

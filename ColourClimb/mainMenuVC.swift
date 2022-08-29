@@ -1,6 +1,6 @@
 //
 //  mainMenuVC.swift
-//  Colour Shift
+//  Colour Climb
 //
 //  Created by Jaden Scali on 2022-07-17.
 //
@@ -51,7 +51,6 @@ var moonMusic: AVAudioPlayer? = {
 class mainMenuVC: UIViewController {
     
     @IBOutlet var superView: UIView!
-    @IBOutlet weak var shiftTitletxt: UILabel!
     
     @IBOutlet weak var musicOnOffTxt: UILabel!
     var musicButtonOn = false
