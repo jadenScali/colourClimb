@@ -20,10 +20,14 @@ class targetLine: SKNode {
     var currentTexture = SKTexture(imageNamed: "shapeLineDarkestRed")
     var line = SKSpriteNode(color: .clear, size: CGSize(width: 1, height: 1))
     var lineImg = SKSpriteNode(texture: SKTexture(imageNamed: "shapeLineDarkestRed"))
+    var srtPoint: CGPoint
+    var shape: SKSpriteNode
     
-    init(numOfLayers: Int, startPoint: CGPoint, endPoint: CGPoint) {
+    init(numOfLayers: Int, startPoint: CGPoint, endPoint: CGPoint, shapeHolder: SKSpriteNode) {
         
         layers = numOfLayers
+        srtPoint = startPoint
+        shape = shapeHolder
         
         super.init()
         
@@ -71,6 +75,7 @@ class targetLine: SKNode {
         lineImg.position = line.position
         lineImg.size.width = line.size.width
         lineImg.size.height = line.size.height * 10
+        lineImg.zPosition = 3
         lineImg.zRotation = deg2rad(55 * (lineImg.size.height / lineImg.size.width)) + angle
         
         addChild(lineImg)
@@ -97,16 +102,67 @@ class targetLine: SKNode {
         }
     }
     
+    func tempRed() {
+        
+        isRed = true
+        
+        currentTexture = lineTextures[0]
+        currentTexture.filteringMode = .nearest
+        lineImg.run(SKAction.setTexture(currentTexture))
+        
+        line.run(SKAction.wait(forDuration: 1), completion: {
+            
+            if self.layers != 0 {
+                self.isRed = false
+            }
+            
+            self.currentTexture = self.lineTextures[self.layers]
+            self.currentTexture.filteringMode = .nearest
+            self.lineImg.run(SKAction.setTexture(self.currentTexture))
+        })
+    }
+    
     func animatedMove() {
         
         //break animation
         line.physicsBody = nil
-        lineImg.run(.sequence([
-            SKAction.move(to: CGPoint(x: line.position.x * 15, y: line.position.y * 15), duration: 2)
-        ]))
+        lineImg.run(SKAction.move(to: CGPoint(x: line.position.x * 15, y: line.position.y * 15), duration: 2))
         
-        parent!.run(.sequence([
+        shape.run(.sequence([
             SKAction.wait(forDuration: 2),
+            SKAction.removeFromParent()
+        ]))
+    }
+    
+    func finalMoveDown() {
+        
+        line.physicsBody = nil
+        shape.run(SKAction.move(to: CGPoint(x: 0, y: 0), duration: 1))
+    }
+    
+    func animatedSpit(i: Int) {
+        
+        let tPositions = [CGPoint(x: 0, y: 1500),
+                          CGPoint(x: 1500, y: 1500),
+                          CGPoint(x: 1500, y: -1500),
+                          CGPoint(x: 1500, y: -1500),
+                          CGPoint(x: -1500, y: -1500),
+                          CGPoint(x: -1500, y: -1500),
+                          CGPoint(x: -1500, y: 1500)]
+        if i < tPositions.count {
+            let moveOut = SKAction.move(to: tPositions[i], duration: 1)
+            moveOut.timingMode = .easeIn
+            
+            lineImg.run(moveOut)
+        } else {
+            let moveOut = SKAction.move(to: CGPoint(x: 0, y: 1500), duration: 1)
+            moveOut.timingMode = .easeIn
+            
+            lineImg.run(moveOut)
+        }
+        
+        shape.run(.sequence([
+            SKAction.wait(forDuration: 1),
             SKAction.removeFromParent()
         ]))
     }

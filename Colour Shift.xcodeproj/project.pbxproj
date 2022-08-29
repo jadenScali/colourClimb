@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793C608028B72E6600579417 /* theMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793C607F28B72E6600579417 /* theMoon.swift */; };
+		793C608228B7E82E00579417 /* hapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793C608128B7E82E00579417 /* hapticManager.swift */; };
 		7951DB0B28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7951DB0A28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf */; };
 		798FD2CC2884879900779196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798FD2CB2884879900779196 /* AppDelegate.swift */; };
 		798FD2CE2884879900779196 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 798FD2CD2884879900779196 /* GameScene.sks */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		793C607F28B72E6600579417 /* theMoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theMoon.swift; sourceTree = "<group>"; };
+		793C608128B7E82E00579417 /* hapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hapticManager.swift; sourceTree = "<group>"; };
 		7951DB0A28B33100003B2F24 /* MesseDuesseldorf-O1d3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MesseDuesseldorf-O1d3.ttf"; sourceTree = "<group>"; };
 		7951DB0C28B3319F003B2F24 /* Colour-Shift-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Colour-Shift-Info.plist"; sourceTree = SOURCE_ROOT; };
 		798FD2C82884879900779196 /* Colour Climb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Colour Climb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +91,8 @@
 				798FD2CD2884879900779196 /* GameScene.sks */,
 				798FD2D12884879900779196 /* playScene.swift */,
 				798FD2E2288490B000779196 /* targetLine.swift */,
+				793C607F28B72E6600579417 /* theMoon.swift */,
+				793C608128B7E82E00579417 /* hapticManager.swift */,
 				798FD2D32884879900779196 /* GameVC.swift */,
 				79C1FECD288ADAE900656B2B /* statsVC.swift */,
 				79C1FECF288C5FC200656B2B /* feedbackVC.swift */,
@@ -177,12 +183,14 @@
 			files = (
 				79C1FED4288C96FF00656B2B /* tutorialScene.swift in Sources */,
 				79C1FECE288ADAE900656B2B /* statsVC.swift in Sources */,
+				793C608228B7E82E00579417 /* hapticManager.swift in Sources */,
 				79C1FECC288ACED800656B2B /* mainNC.swift in Sources */,
 				798FD2D22884879900779196 /* playScene.swift in Sources */,
 				79C1FECA288A171400656B2B /* optionsVC.swift in Sources */,
 				798FD2E528849FD000779196 /* mainMenuVC.swift in Sources */,
 				798FD2D42884879900779196 /* GameVC.swift in Sources */,
 				798FD2E3288490B000779196 /* targetLine.swift in Sources */,
+				793C608028B72E6600579417 /* theMoon.swift in Sources */,
 				79C1FED0288C5FC200656B2B /* feedbackVC.swift in Sources */,
 				798FD2CC2884879900779196 /* AppDelegate.swift in Sources */,
 			);

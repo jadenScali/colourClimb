@@ -30,10 +30,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     //lower spinSpeed means it'll spin faster
     var spinSpeed = 5.0
     var maxSpinSpeed = 2.75
-    var sizeMultipler = 3
+    var sizeMultipler = 3.0
     var totalTargets = 0
     var layers = 1
-    var round = 0
+    var round = 20
     var set = 0
     var popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
     var masterNode = SKNode()
@@ -46,6 +46,9 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     var ballsFired = 0
     
     var currentShapeType = ShapeType.easy
+    
+    var moon: theMoon?
+    var moonShapes: [[CGPoint]]?
     
     enum ShapeType {
         case side, easy, medium, hard
@@ -60,6 +63,9 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         //view.showsPhysics = true
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        isTransitioning = false
+        highShape = true
         
         loadStats()
         
@@ -110,7 +116,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 mfg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
                 mfg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 mfg.position = CGPoint(x: CGFloat(i) * self.scene!.size.width, y: gSpawn.y)
-                mfg.zPosition = -99
+                mfg.zPosition = -1
                 
                 grounds.addChild(mfg)
             }
@@ -124,7 +130,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 vfg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
                 vfg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 vfg.position = CGPoint(x: gSpawn.x, y: (CGFloat(i) * self.scene!.size.height) + gSpawn.y)
-                vfg.zPosition = -99
+                vfg.zPosition = -1
                 
                 grounds.addChild(vfg)
             }
@@ -136,7 +142,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             fg.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
             fg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             fg.position = gSpawn
-            fg.zPosition = -99
+            fg.zPosition = -1
             
             grounds.addChild(fg)
         }
@@ -152,7 +158,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 bg.size.width = (self.scene?.size.height)! * 1.686656671664168
                 bg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 bg.position = CGPoint(x: gSpawn.x, y: (CGFloat(i) * self.scene!.size.height) + gSpawn.y)
-                bg.zPosition = -100
+                bg.zPosition = -2
                 
                 bgWidth = bg.size.width
                 
@@ -169,7 +175,7 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                 bg.size.width = (self.scene?.size.height)! * 1.686656671664168
                 bg.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 bg.position = CGPoint(x: CGFloat(i) * bg.size.width, y: gSpawn.y)
-                bg.zPosition = -100
+                bg.zPosition = -2
                 
                 bgWidth = bg.size.width
                 
@@ -343,26 +349,26 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             popupTextColor = #colorLiteral(red: 0.9137254902, green: 0.8470588235, blue: 0.6509803922, alpha: 1)
         }
         
-        roundPopUp()
+        roundPopUp(txt: "Round \(round)")
         
         //a set resets every 5 levels and it's value otehrwise increases by one each round
         //helps space out harder shapes and make them more common as game progresses
         if set == 1 {
             currentShapeType = .easy
-            spawnShape(type: easyShapes)
+            spawnShape(type: ranPickShape(easyShapes), pos: CGPoint(x: 0, y: 300))
         } else if set == 5 {
             if round >= 10 {
                 let ranNum = Int.random(in: 1...2)
                 if ranNum == 1 {
                     currentShapeType = .hard
-                    spawnShape(type: hardShapes)
+                    spawnShape(type: ranPickShape(hardShapes), pos: CGPoint(x: 0, y: 300))
                 } else {
                     currentShapeType = .medium
-                    spawnShape(type: mediumShapes)
+                    spawnShape(type: ranPickShape(mediumShapes), pos: CGPoint(x: 0, y: 300))
                 }
             } else {
                 currentShapeType = .medium
-                spawnShape(type: mediumShapes)
+                spawnShape(type: ranPickShape(mediumShapes), pos: CGPoint(x: 0, y: 300))
             }
         } else {
             var mediumShapesCount = 0
@@ -379,10 +385,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
             
             if 5 - set <= mediumShapesCount {
                 currentShapeType = .medium
-                spawnShape(type: mediumShapes)
+                spawnShape(type: ranPickShape(mediumShapes), pos: CGPoint(x: 0, y: 300))
             } else {
                 currentShapeType = .easy
-                spawnShape(type: easyShapes)
+                spawnShape(type: ranPickShape(easyShapes), pos: CGPoint(x: 0, y: 300))
             }
         }
         
@@ -395,10 +401,13 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func spawnShape(type shapes: [[CGPoint]]) {
+    func ranPickShape(_ shapes: [[CGPoint]]) -> [CGPoint] {
         
         let ranNum = Int.random(in: 0...shapes.count - 1)
-        let sides = shapes[ranNum]
+        return shapes[ranNum]
+    }
+    
+    func spawnShape(type sides: [CGPoint], pos: CGPoint) {
         
         totalTargets = sides.count
         
@@ -410,19 +419,18 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         for i in Range(0...sides.count - 1) {
             if i < sides.count - 1 {
-                let t = targetLine(numOfLayers: layers, startPoint: sides[i], endPoint: sides[i+1])
+                let t = targetLine(numOfLayers: layers, startPoint: sides[i], endPoint: sides[i+1], shapeHolder: shape)
                 shape.addChild(t)
             } else {
-                let t = targetLine(numOfLayers: layers, startPoint: sides[i], endPoint: sides[0])
+                let t = targetLine(numOfLayers: layers, startPoint: sides[i], endPoint: sides[0], shapeHolder: shape)
                 shape.addChild(t)
             }
         }
         
-        shape.position = CGPoint(x: 0, y: 300)
+        shape.position = pos
         shape.isHidden = true
         masterNode.addChild(shape)
         
-        //spawning animation
         if round > 1 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 shape.isHidden = false
@@ -446,39 +454,41 @@ class playScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnBall() {
         
-        ballsFired += 1
-        
-        var texture = SKTexture(imageNamed: "colourClimbBall")
-        
-        if round > 5 && round <= 10 {
-            texture = SKTexture(imageNamed: "colourClimbBallDelightfulOrange")
-        } else if round > 10 && round < 15 {
-            texture = SKTexture(imageNamed: "colourClimbBallOffBlack")
+        if !isTransitioning {
+            ballsFired += 1
+            
+            var texture = SKTexture(imageNamed: "colourClimbBall")
+            
+            if round > 5 && round <= 10 {
+                texture = SKTexture(imageNamed: "colourClimbBallDelightfulOrange")
+            } else if round > 10 && round < 15 {
+                texture = SKTexture(imageNamed: "colourClimbBallOffBlack")
+            }
+            
+            texture.filteringMode = .nearest
+            
+            let hitBoxTexture = SKTexture(imageNamed: "circle")
+            let ball = SKSpriteNode(texture: texture)
+            ball.size = CGSize(width: 40, height: 40)
+            ball.name = "ball"
+            ball.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            ball.physicsBody = SKPhysicsBody(texture: hitBoxTexture, size: hitBoxTexture.size())
+            ball.physicsBody?.isDynamic = true
+            ball.physicsBody?.allowsRotation = false
+            ball.physicsBody?.friction = 0
+            ball.physicsBody?.restitution = 1
+            ball.physicsBody?.linearDamping = 0
+            ball.physicsBody?.angularDamping = 0
+            ball.physicsBody?.affectedByGravity = false
+            ball.physicsBody!.categoryBitMask = ballCategory
+            ball.physicsBody!.contactTestBitMask = targetCategory
+            ball.physicsBody!.collisionBitMask = targetCategory
+            ball.position = CGPoint(x: 0, y: -700)
+            ball.zPosition = 2
+            masterNode.addChild(ball)
+            
+            ball.physicsBody!.velocity.dy = 1000
         }
-        
-        texture.filteringMode = .nearest
-        
-        let hitBoxTexture = SKTexture(imageNamed: "circle")
-        let ball = SKSpriteNode(texture: texture)
-        ball.size = CGSize(width: 40, height: 40)
-        ball.name = "ball"
-        ball.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        ball.physicsBody = SKPhysicsBody(texture: hitBoxTexture, size: hitBoxTexture.size())
-        ball.physicsBody?.isDynamic = true
-        ball.physicsBody?.allowsRotation = false
-        ball.physicsBody?.friction = 0
-        ball.physicsBody?.restitution = 1
-        ball.physicsBody?.linearDamping = 0
-        ball.physicsBody?.angularDamping = 0
-        ball.physicsBody?.affectedByGravity = false
-        ball.physicsBody!.categoryBitMask = ballCategory
-        ball.physicsBody!.contactTestBitMask = targetCategory
-        ball.physicsBody!.collisionBitMask = targetCategory
-        ball.position = CGPoint(x: 0, y: -700)
-        ball.zPosition = 2
-        masterNode.addChild(ball)
-        
-        ball.physicsBody!.velocity.dy = 1000
     }
     
     func endGame() {
@@ -552,10 +562,10 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         lazy var popUpText: SKLabelNode = {
             let popUpText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             popUpText.fontSize = fontSize
-            popUpText.zPosition = 1
+            popUpText.zPosition = 4
             popUpText.horizontalAlignmentMode = .center
             popUpText.verticalAlignmentMode = .baseline
-            popUpText.text = "\(txt)"
+            popUpText.text = txt
             popUpText.position = position
             popUpText.fontColor = popupTextColor
             return popUpText
@@ -587,19 +597,23 @@ class playScene: SKScene, SKPhysicsContactDelegate {
         
         informStats(typeHit: currentShapeType, popUpPos: nil)
         
-        beginRound()
+        if round != 21 {
+            beginRound()
+        } else {
+            moonBattle()
+        }
     }
     
-    func roundPopUp() {
+    func roundPopUp(txt: String) {
         
         lazy var popUpText: SKLabelNode = {
             let popUpText = SKLabelNode(fontNamed: "Messe Duesseldorf")
             popUpText.fontSize = 100
-            popUpText.zPosition = 1
+            popUpText.zPosition = 4
             popUpText.fontColor = popupTextColor
             popUpText.horizontalAlignmentMode = .center
             popUpText.verticalAlignmentMode = .baseline
-            popUpText.text = "Round \(round)"
+            popUpText.text = txt
             popUpText.position = CGPoint(x: 0, y: -1000)
             return popUpText
         }()
@@ -658,13 +672,85 @@ class playScene: SKScene, SKPhysicsContactDelegate {
                         gotAllTargets = false
                     }
                 }
-                if gotAllTargets {
+                
+                if gotAllTargets && round != 22 {
                     newRound()
+                } else if gotAllTargets {
+                    moon?.changePhase()
                 }
             }
         } else if object.name == "boarder" {
             ball.removeFromParent()
         }
+    }
+    
+    func moonBattle() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(moonBattleSpawnShape), name: Notification.Name("moonBattleSpawnShape"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moonBattleOver), name: Notification.Name("moonBattleOver"), object: nil)
+        
+        round += 1
+        targetLines = []
+        layers = 3
+        popupTextColor = #colorLiteral(red: 0.6078431373, green: 0.1333333333, blue: 0.1490196078, alpha: 1)
+        
+        roundPopUp(txt: "The Moon")
+        
+        sizeMultipler = 4.5
+        let octagonPoints = [
+            CGPoint(x: -50 * sizeMultipler, y: 0 * sizeMultipler),
+            CGPoint(x: -35.5 * sizeMultipler, y: 35.5 * sizeMultipler),
+            CGPoint(x: 0 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: 35.5 * sizeMultipler, y: 35.5 * sizeMultipler),
+            CGPoint(x: 50 * sizeMultipler, y: 0 * sizeMultipler),
+            CGPoint(x: 35.5 * sizeMultipler, y: -35.5 * sizeMultipler),
+            CGPoint(x: 0 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: -35.5 * sizeMultipler, y: -35.5 * sizeMultipler)
+        ]
+        sizeMultipler = 2.5
+        let parallelogramPoints = [
+            CGPoint(x: -50 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: 25 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: 50 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: -25 * sizeMultipler, y: -50 * sizeMultipler)
+        ]
+        sizeMultipler = 3.5
+        let imposibleBoxPoints = [
+            CGPoint(x: -50 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: 50 * sizeMultipler, y: 50 * sizeMultipler),
+            CGPoint(x: 0 * sizeMultipler, y: 0 * sizeMultipler),
+            CGPoint(x: 50 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: 0 * sizeMultipler, y: 0 * sizeMultipler),
+            CGPoint(x: -50 * sizeMultipler, y: -50 * sizeMultipler),
+            CGPoint(x: 0 * sizeMultipler, y: 0 * sizeMultipler)
+        ]
+        
+        moonShapes = [octagonPoints, parallelogramPoints, imposibleBoxPoints]
+        
+        moon = theMoon(sceneHeight: self.frame.size.height, scene: self)
+        moon!.size = CGSize(width: self.scene!.size.width, height: self.scene!.size.height)
+        addChild(moon!)
+        
+        self.run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.25)
+        ]), completion: {
+            self.currentShapeType = .hard
+            self.spawnShape(type: self.moonShapes![self.moon!.phase - 1], pos: CGPoint(x: 0, y: 300))
+        })
+    }
+    
+    @objc func moonBattleSpawnShape() {
+        
+        if highShape {
+            spawnShape(type: moonShapes![self.moon!.phase - 1], pos: CGPoint(x: 0, y: 300))
+        } else {
+            spawnShape(type: moonShapes![self.moon!.phase - 1], pos: CGPoint(x: 0, y: -300))
+        }
+    }
+    
+    @objc func moonBattleOver() {
+        
+        endGame()
     }
 }
 

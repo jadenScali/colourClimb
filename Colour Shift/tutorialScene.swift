@@ -227,11 +227,11 @@ class tutorialScene: SKScene, SKPhysicsContactDelegate {
         //spawns a line between every point in the array of CGPoints as a child of shape
          for i in Range(0...sides.count - 1) {
              if i < sides.count - 1 {
-                 let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[i+1])
-                 shape.addChild(t)
+                 //let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[i+1])
+                 //shape.addChild(t)
              } else {
-                 let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[0])
-                 shape.addChild(t)
+                 //let t = targetLine(numOfLayers: numLayers, startPoint: sides[i], endPoint: sides[0])
+                 //shape.addChild(t)
              }
          }
          shape.position = CGPoint(x: 0, y: 260)
